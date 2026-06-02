@@ -480,14 +480,14 @@ footer{padding:64px 0 80px;background:#050610}
       <div class="cell-b span6">
         <div class="lbl">Shutterstock stockholder elections at close</div>
         <table class="dtable" style="margin-top:4px">
-          <thead><tr><th>Election</th><th>Consideration</th><th>Implied value*</th></tr></thead>
+          <thead><tr><th>Election</th><th>Consideration per SSTK share</th><th>Ops note</th></tr></thead>
           <tbody>
-            <tr><td>Cash</td><td class="mono">$28.8487 cash</td><td class="mono">$28.85</td></tr>
-            <tr><td>Stock (all)</td><td class="mono">All Getty shares</td><td class="mono">~$35.14</td></tr>
-            <tr><td>Mixed</td><td class="mono">Cash + Getty shares</td><td class="mono">~$33.07</td></tr>
+            <tr><td>Cash</td><td class="mono">$28.84870 cash</td><td class="mono">Subject to proration</td></tr>
+            <tr><td>Stock</td><td class="mono">13.67237 GETY shares</td><td class="mono">Subject to proration</td></tr>
+            <tr><td>Mixed</td><td class="mono">$9.50 cash + 9.17 GETY shares</td><td class="mono">Default if no valid election</td></tr>
           </tbody>
         </table>
-        <div class="note" style="margin-top:10px">*Implied values as of 6 Jan 2025. Fixed in shares, floating in value. Exact exchange ratios and any proration governed by the merger agreement and prospectus.<sup>2</sup></div>
+        <div class="note" style="margin-top:10px">Election mechanics are fixed by the merger agreement. Cash and stock elections are subject to proration if oversubscribed; no fractional Getty shares will be issued, with cash paid in lieu.<sup>2,16</sup></div>
       </div>
       <div class="cell-b span6">
         <div class="lbl">Break-up fees — bilateral structure</div>
@@ -578,12 +578,12 @@ footer{padding:64px 0 80px;background:#050610}
         <p>Stockholders adopt the merger agreement at a special meeting — the required target-side vote.<sup>2</sup></p>
       </div>
       <div class="tl-item uk r"><div class="dot"></div>
-        <div class="date">Aug 2025</div>
-        <h4>CMA opens Phase 1 investigation<span class="tag-ph">UK · PHASE 1</span></h4>
-        <p>The UK Competition and Markets Authority begins reviewing the anticipated acquisition under the Enterprise Act 2002.<sup>4,7</sup></p>
+        <div class="date">23 Jun – 22 Aug 2025</div>
+        <h4>CMA invites comments, then opens Phase 1<span class="tag-ph">UK · PHASE 1</span></h4>
+        <p>The CMA first invites third-party comments on 23 June 2025 and formally launches its Phase 1 merger inquiry on 22 August 2025.<sup>4,7</sup></p>
       </div>
       <div class="tl-item r"><div class="dot"></div>
-        <div class="date">03 Oct 2025</div>
+        <div class="date">06 Oct 2025</div>
         <h4>$628.4M high-yield notes priced to fund the deal</h4>
         <p>Getty prices 10.500% senior secured notes; proceeds held in escrow and redeemable if the deal does not close by 6 Oct 2026.<sup>6</sup></p>
       </div>
@@ -646,16 +646,16 @@ footer{padding:64px 0 80px;background:#050610}
         <ul>
           <li>Surviving listed issuer: Getty Images Holdings, Inc. (NYSE: GETY).</li>
           <li>Shutterstock (NYSE: SSTK) shares are cancelled at close; the line is delisted and the CUSIP retired.</li>
-          <li>Cash election fixed at $28.8487/share; stock and mixed elections fixed in Getty shares per the merger agreement.</li>
+          <li>Cash election fixed at $28.84870/share; stock election fixed at 13.67237 Getty shares; mixed election fixed at $9.50 cash plus 9.17 Getty shares.</li>
         </ul>
       </div>
       <div class="card">
         <h4>Mechanics ops teams must monitor</h4>
         <ul>
-          <li><b>Election window and default:</b> holders who do not elect receive the default treatment in the prospectus — confirm before instructing clients.</li>
-          <li><b>Proration:</b> cash/stock elections in fixed-pool mergers are commonly subject to proration. Verify the mechanic before instructing.</li>
-          <li><b>Fractional shares:</b> typically settled in cash in lieu.</li>
-          <li><b>Tax treatment:</b> cash consideration generally taxable; stock component may be tax-deferred. Not tax advice.</li>
+          <li><b>Election window and default:</b> holders who make no valid election are generally treated as making a mixed election.</li>
+          <li><b>Proration:</b> cash elections are prorated if the cash pool is oversubscribed; stock elections are prorated if the stock pool is oversubscribed.</li>
+          <li><b>Fractional shares:</b> no fractional Getty shares will be issued; fractional entitlements are settled in cash in lieu.</li>
+          <li><b>Tax treatment:</b> the parties intend the transaction to qualify as a tax-deferred reorganization for U.S. federal income tax purposes. Cash received, including cash in lieu of fractional shares, may cause taxable gain recognition. Not tax advice.</li>
         </ul>
       </div>
       <div class="card">
@@ -672,8 +672,8 @@ footer{padding:64px 0 80px;background:#050610}
         <h4>A second event on the debt side</h4>
         <p>The deal spawned its own debt corporate action: $628.4M of 10.500% senior secured notes issued and escrowed.<sup>6</sup></p>
         <ul>
-          <li>If the merger is not consummated by 6 Oct 2026, the notes are redeemed at 100% of issue price plus accrued interest.</li>
-          <li>First cash interest payment fell in May 2026; second is due at the outside date.</li>
+          <li>If the merger is not consummated by 6 Oct 2026, the notes are subject to special mandatory redemption at 100% of issue price plus accrued and unpaid interest.</li>
+          <li>Interest is scheduled semiannually on 15 May and 15 November, beginning 15 May 2026; 6 Oct 2026 is the merger outside-date redemption trigger, not a scheduled interest-payment date.</li>
           <li>A live example of acquisition financing riding alongside an equity event, with its own redemption trigger for fixed-income servicing teams.</li>
         </ul>
       </div>
@@ -695,7 +695,7 @@ footer{padding:64px 0 80px;background:#050610}
         <p>The clearance condition requires Shutterstock to divest its entire global editorial business to a CMA-approved buyer before the merger can close.<sup>9,10</sup></p>
         <ul>
           <li>An offer to sell only Backgrid and Splash (celebrity/paparazzi) was rejected — the CMA found too much overlap with the broader standard editorial operation.</li>
-          <li>No buyer has been publicly named as of June 2026.</li>
+          <li>No CMA-approved purchaser has been publicly named as of 1 June 2026.</li>
           <li>The October 2026 outside date creates material time pressure on the sale process.</li>
         </ul>
       </div>
@@ -845,7 +845,7 @@ footer{padding:64px 0 80px;background:#050610}
             <tr><td>Ticker</td><td class="mono">NYSE: GETY</td></tr>
             <tr><td>Headquarters</td><td>Seattle, Washington</td></tr>
             <tr><td>FY2024 revenue</td><td class="mono">$939.3M</td></tr>
-            <tr><td>FY2025 revenue</td><td class="mono">$981.3M (record)</td></tr>
+            <tr><td>FY2025 revenue</td><td class="mono">$981.3M (record)<sup>14</sup></td></tr>
             <tr><td>Profile</td><td>Premium creative &amp; editorial imagery, exclusive event coverage<sup>11,14</sup></td></tr>
           </tbody>
         </table>
@@ -857,8 +857,8 @@ footer{padding:64px 0 80px;background:#050610}
             <tr><td>Ticker</td><td class="mono">NYSE: SSTK</td></tr>
             <tr><td>Founded</td><td>2002 · Jon Oringer</td></tr>
             <tr><td>Headquarters</td><td>Empire State Building, New York</td></tr>
-            <tr><td>FY2023 revenue</td><td class="mono">$875M</td></tr>
-            <tr><td>Notable units</td><td>Giphy, Pond5, TurboSquid, PremiumBeat, Splash, Backgrid<sup>15</sup></td></tr>
+            <tr><td>FY2025 revenue</td><td class="mono">$989.9M<sup>17</sup></td></tr>
+            <tr><td>Notable units</td><td>Giphy, Envato, Pond5, TurboSquid, PremiumBeat, Splash News, Backgrid<sup>15</sup></td></tr>
           </tbody>
         </table>
       </div>
@@ -883,13 +883,14 @@ footer{padding:64px 0 80px;background:#050610}
       <div class="src"><div class="n">[7]</div><a href="https://www.osborneclarke.com/insights/what-does-getty-imagesshutterstock-decision-tell-business-about-how-cma-approaches-mergers" target="_blank" rel="noopener">CMA approach to mergers analysis</a><span>Osborne Clarke (law firm commentary)</span></div>
       <div class="src"><div class="n">[8]</div><a href="https://www.slaughterandmay.com/insights/new-insights/competition-and-regulatory-newsletter-getty-shutterstock-receives-conditional-clearance-from-the-cma/" target="_blank" rel="noopener">Conditional clearance analysis</a><span>Slaughter and May (law firm commentary)</span></div>
       <div class="src"><div class="n">[9]</div><a href="https://www.gov.uk/government/news/cma-conditionally-clears-getty-merger-with-shutterstock" target="_blank" rel="noopener">CMA conditionally clears the merger (15 May 2026)</a><span>UK Competition and Markets Authority (GOV.UK)</span></div>
-      <div class="src"><div class="n">[10]</div><a href="https://assets.publishing.service.gov.uk/media/6a0c1a5dfcae986635db9155/Final_report_19_May_2026.pdf" target="_blank" rel="noopener">CMA Phase 2 final report (PDF)</a><span>UK Competition and Markets Authority</span></div>
+      <div class="src"><div class="n">[10]</div><a href="https://assets.publishing.service.gov.uk/media/6a0f2a3529bb11891b1cf034/Final_report_19_May_2026_2.pdf" target="_blank" rel="noopener">CMA Phase 2 final report (PDF)</a><span>UK Competition and Markets Authority</span></div>
       <div class="src"><div class="n">[11]</div><a href="https://investors.gettyimages.com/static-files/f76356c6-980d-47f4-950c-b9d3d0579aeb" target="_blank" rel="noopener">Getty Images Form 10-Q (filed 11 May 2026)</a><span>U.S. Securities and Exchange Commission</span></div>
       <div class="src"><div class="n">[12]</div><a href="https://www.investing.com/news/transcripts/earnings-call-transcript-getty-images-q1-2026-sees-mixed-results-and-stock-dip-93CH-4678541" target="_blank" rel="noopener">Getty Images Q1 2026 earnings call transcript</a><span>Investing.com</span></div>
       <div class="src"><div class="n">[13]</div><a href="https://octus.com/resources/articles/primary-preview-investors-express-mixed-views-on-getty-images-bond/" target="_blank" rel="noopener">Investor views on the Getty bond</a><span>Octus</span></div>
-      <div class="src"><div class="n">[14]</div><a href="https://en.wikipedia.org/wiki/Getty_Images" target="_blank" rel="noopener">Getty Images — company background</a><span>Wikipedia (background reference only)</span></div>
-      <div class="src"><div class="n">[15]</div><a href="https://en.wikipedia.org/wiki/Shutterstock" target="_blank" rel="noopener">Shutterstock — company background</a><span>Wikipedia (background reference only)</span></div>
+      <div class="src"><div class="n">[14]</div><a href="https://www.sec.gov/Archives/edgar/data/1898496/000162828026018160/gety-20251231.htm" target="_blank" rel="noopener">Getty Images Form 10-K for FY2025</a><span>U.S. Securities and Exchange Commission (EDGAR)</span></div>
+      <div class="src"><div class="n">[15]</div><a href="https://www.sec.gov/Archives/edgar/data/1549346/000154934625000011/sstk-20241231.htm" target="_blank" rel="noopener">Shutterstock Form 10-K for FY2024 — brand portfolio</a><span>U.S. Securities and Exchange Commission (EDGAR)</span></div>
       <div class="src"><div class="n">[16]</div><a href="https://www.sec.gov/Archives/edgar/data/0001898496/000110465925001742/tm2415646d1_8k.htm" target="_blank" rel="noopener">Merger agreement termination fees</a><span>SEC Form 8-K / Form 425 (07 Jan 2025)</span></div>
+      <div class="src"><div class="n">[17]</div><a href="https://investor.shutterstock.com/news-releases/news-release-details/shutterstock-reports-full-year-2025-and-fourth-quarter-financial" target="_blank" rel="noopener">Shutterstock full-year 2025 and fourth-quarter results</a><span>Shutterstock investor relations</span></div>
     </div>
   </div>
 </section>
