@@ -78,7 +78,7 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:200;
   transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
 header.nav.solid{background:rgba(6,7,13,.97);border-bottom:1px solid var(--line)}
 .brandmark{display:flex;align-items:center;gap:14px;font-family:var(--mono);
-  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;flex-shrink:0}
 .brandmark b{font-weight:600;letter-spacing:.02em}
 .brandmark .x{color:var(--cobalt);font-family:var(--display);font-size:1.1rem;font-style:italic}
 .navlinks{display:flex;gap:26px;font-family:var(--mono);font-size:.72rem;
@@ -88,7 +88,53 @@ header.nav.solid{background:rgba(6,7,13,.97);border-bottom:1px solid var(--line)
 .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;
   width:0;background:var(--cobalt);transition:width .25s}
 .navlinks a:hover::after{width:100%}
-@media(max-width:820px){.navlinks{display:none}}
+
+/* ============================ HAMBURGER ============================ */
+.hamburger{
+  display:none;flex-direction:column;justify-content:center;align-items:center;
+  gap:5px;width:38px;height:38px;cursor:pointer;background:none;
+  border:1px solid var(--line-strong);padding:0;flex-shrink:0;
+}
+.hamburger span{
+  display:block;width:18px;height:1.5px;background:var(--paper);
+  transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .25s;
+  transform-origin:center;
+}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ============================ MOBILE MENU ============================ */
+.mob-menu{
+  position:fixed;inset:0;z-index:240;
+  background:var(--ink);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 36px;
+  transform:translateX(100%);
+  transition:transform .55s cubic-bezier(.16,1,.3,1);
+}
+.mob-menu.open{transform:translateX(0)}
+.mob-menu .m-label{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.38em;
+  text-transform:uppercase;color:var(--cobalt);margin-bottom:28px;
+}
+.mob-menu a{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(2.2rem,9vw,3.6rem);letter-spacing:-.025em;line-height:1;
+  color:var(--paper-dim);padding:14px 0;
+  border-bottom:1px solid var(--line);display:block;
+  transition:color .2s,padding-left .25s;
+}
+.mob-menu a:first-of-type{border-top:1px solid var(--line)}
+.mob-menu a:hover,.mob-menu a:active{color:var(--paper);padding-left:8px}
+.mob-menu .m-close{
+  position:absolute;top:20px;right:24px;
+  width:38px;height:38px;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:var(--paper-dim);cursor:pointer;
+  border:1px solid var(--line-strong);background:none;
+  font-family:var(--mono);transition:color .2s,border-color .2s;
+}
+.mob-menu .m-close:hover{color:var(--paper)}
 
 /* ============================ HERO ============================ */
 .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;
@@ -133,7 +179,7 @@ h1.headline .blue{color:var(--cobalt);font-style:italic;font-weight:400}
 
 /* ticker */
 .tickerbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:#08091100;background:#080A14;overflow:hidden;white-space:nowrap}
+  background:#080A14;overflow:hidden;white-space:nowrap}
 .tickerbar .track{display:inline-flex;animation:marq 44s linear infinite}
 .tickerbar:hover .track{animation-play-state:paused}
 @keyframes marq{to{transform:translateX(-50%)}}
@@ -167,8 +213,6 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
 /* ============================ LIVE QUOTES ============================ */
 .quotes-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;
   background:var(--line);border:1px solid var(--line)}
-@media(max-width:700px){.quotes-row{grid-template-columns:1fr}}
-
 .qcard{background:var(--panel);padding:36px 32px;position:relative;overflow:hidden}
 .qcard::after{content:"";position:absolute;top:0;left:0;right:0;height:3px}
 .qcard.getty::after{background:var(--paper-dim)}
@@ -221,12 +265,15 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
 @media(max-width:860px){.span3,.span4,.span6,.span8{grid-column:span 12}}
 
 /* table */
-.dtable{width:100%;border-collapse:collapse;font-size:.9rem}
+.dtable-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
+.dtable{width:100%;border-collapse:collapse;font-size:.9rem;min-width:360px}
 .dtable th,.dtable td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}
 .dtable th{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--grey);font-weight:500}
+  text-transform:uppercase;color:var(--grey);font-weight:500;white-space:nowrap}
 .dtable td{color:var(--paper-dim)}.dtable td:first-child{color:var(--paper);font-weight:500}
 .dtable tr:last-child td{border-bottom:none}
+/* two-col tables don't need min-width */
+.dtable.narrow{min-width:0}
 
 /* ============================ TIMELINE ============================ */
 .legend{display:flex;gap:24px;margin-bottom:36px;font-family:var(--mono);
@@ -306,7 +353,6 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
 /* sources */
 .srcgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;
   background:var(--line);border:1px solid var(--line)}
-@media(max-width:700px){.srcgrid{grid-template-columns:1fr}}
 .src{background:var(--panel);padding:22px 24px;font-size:.9rem}
 .src .n{font-family:var(--mono);color:var(--cobalt);font-size:.76rem;margin-bottom:5px}
 .src a{color:var(--paper);border-bottom:1px solid var(--line-strong);transition:border-color .2s}
@@ -323,12 +369,65 @@ footer{padding:64px 0 80px;background:#050610}
 .foot-top .lg{font-family:var(--display);font-weight:900;font-size:1.5rem}
 .foot-top .lg .x{color:var(--cobalt);font-style:italic;font-weight:400}
 .asof{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--grey)}
+
+/* ============================ MOBILE OVERRIDES ============================ */
+@media(max-width:820px){
+  .navlinks{display:none}
+  .hamburger{display:flex}
+  header.nav{padding:14px 20px}
+  .brandmark{font-size:.7rem;gap:8px}
+}
+@media(max-width:700px){
+  .quotes-row{grid-template-columns:1fr}
+  .srcgrid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  section.band{padding:64px 0}
+  .sec-head{margin-bottom:36px}
+  .hero-meta{gap:14px;font-size:.66rem}
+  .hero-tag{gap:8px}
+  .pill{font-size:.6rem;padding:5px 10px;letter-spacing:.14em}
+  .tickerbar .cell{padding:10px 18px;font-size:.72rem}
+  .mediaband{min-height:40vh}
+  .mediaband blockquote{font-size:clamp(1.2rem,5.5vw,1.9rem)}
+  .foot-top{flex-direction:column;gap:8px}
+  section.band#quotes{padding:52px 0}
+  .tl-item{padding:0 0 28px 36px}
+  .tl-item h4{font-size:1.04rem}
+  .card{padding:22px 18px}
+  .split .col{padding:24px 20px}
+  .cell-b{padding:20px 16px}
+  .bento .cell-b .big{font-size:clamp(1.7rem,7vw,2.2rem)}
+  .qstrip{padding:12px 16px;gap:14px;font-size:.68rem}
+  .src{padding:16px 16px}
+  .legend{gap:12px;font-size:.67rem}
+  .sec-head h2{font-size:clamp(1.6rem,7.5vw,2.4rem)}
+}
+@media(max-width:480px){
+  .qcard{padding:22px 18px}
+  .qcard .q-price{font-size:2.6rem}
+  .qcard .q-stats{grid-template-columns:1fr 1fr}
+  .brandmark{letter-spacing:.06em}
+}
 </style>
 </head>
 <body>
 <div class="grain"></div>
 
-<!-- ============================ NAV ============================ -->
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu" aria-hidden="true">
+  <button class="m-close" id="mobClose" aria-label="Close menu">✕</button>
+  <div class="m-label">Navigation</div>
+  <a href="#deal"       class="mob-link">The Deal</a>
+  <a href="#timeline"   class="mob-link">Timeline</a>
+  <a href="#corp"       class="mob-link">Corp. Actions</a>
+  <a href="#advisory"   class="mob-link">M&amp;A Lens</a>
+  <a href="#regulators" class="mob-link">Regulators</a>
+  <a href="#sources"    class="mob-link">Sources</a>
+</div>
+
+<!-- NAV -->
 <header class="nav" id="nav">
   <div class="brandmark"><b>GETTY IMAGES</b><span class="x">×</span><b>SHUTTERSTOCK</b></div>
   <nav class="navlinks">
@@ -339,9 +438,12 @@ footer{padding:64px 0 80px;background:#050610}
     <a href="#regulators">Regulators</a>
     <a href="#sources">Sources</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
-<!-- ============================ HERO ============================ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-media">
     <video autoplay muted loop playsinline poster="assets/gettyheroposter.jpg"
@@ -379,14 +481,14 @@ footer{padding:64px 0 80px;background:#050610}
   </div>
 </section>
 
-<!-- ticker -->
+<!-- TICKER -->
 <div class="tickerbar" aria-hidden="true">
   <div class="track" id="tickerTrack">
     <span class="cell">LOADING LIVE QUOTES…</span>
   </div>
 </div>
 
-<!-- ============================ LIVE QUOTES ============================ -->
+<!-- LIVE QUOTES -->
 <section class="band" id="quotes" style="padding:72px 0">
   <div class="wrap">
     <div class="sec-head">
@@ -396,7 +498,6 @@ footer{padding:64px 0 80px;background:#050610}
       </div>
       <p class="sec-intro r d2">The deal has not closed. GETY and SSTK remain independently listed while the CMA-mandated divestiture of Shutterstock's editorial business works toward an approved buyer.</p>
     </div>
-
     <div class="quotes-row r d1">
       <div class="qcard getty" id="card-GETY">
         <div class="q-header">
@@ -439,7 +540,6 @@ footer{padding:64px 0 80px;background:#050610}
         </div>
       </div>
     </div>
-
     <div class="qstrip r d2">
       <div>CASH ELECTION REFERENCE <b class="blue">$28.8487 / SSTK share</b></div>
       <div>SSTK vs CASH ELECTION <b data-spread>—</b></div>
@@ -449,7 +549,7 @@ footer{padding:64px 0 80px;background:#050610}
   </div>
 </section>
 
-<!-- ============================ DEAL AT A GLANCE ============================ -->
+<!-- DEAL AT A GLANCE -->
 <section class="band" id="deal">
   <div class="wrap">
     <div class="sec-head">
@@ -477,59 +577,71 @@ footer{padding:64px 0 80px;background:#050610}
         <div class="big"><span class="u">$</span><span class="count" data-to="150" data-dec="0">0</span>–200M</div>
         <div class="note">Targeted year three; accretive from year two.<sup>1</sup></div>
       </div>
+
       <div class="cell-b span6">
         <div class="lbl">Shutterstock stockholder elections at close</div>
-        <table class="dtable" style="margin-top:4px">
-          <thead><tr><th>Election</th><th>Consideration per SSTK share</th><th>Ops note</th></tr></thead>
-          <tbody>
-            <tr><td>Cash</td><td class="mono">$28.84870 cash</td><td class="mono">Subject to proration</td></tr>
-            <tr><td>Stock</td><td class="mono">13.67237 GETY shares</td><td class="mono">Subject to proration</td></tr>
-            <tr><td>Mixed</td><td class="mono">$9.50 cash + 9.17 GETY shares</td><td class="mono">Default if no valid election</td></tr>
-          </tbody>
-        </table>
-        <div class="note" style="margin-top:10px">Election mechanics are fixed by the merger agreement. Cash and stock elections are subject to proration if oversubscribed; no fractional Getty shares will be issued, with cash paid in lieu.<sup>2,16</sup></div>
+        <div class="dtable-wrap" style="margin-top:4px">
+          <table class="dtable">
+            <thead><tr><th>Election</th><th>Consideration per SSTK share</th><th>Proration</th></tr></thead>
+            <tbody>
+              <tr><td>Cash</td><td class="mono">$28.84870 cash</td><td class="mono">Subject to proration</td></tr>
+              <tr><td>Stock</td><td class="mono">13.67237 GETY shares</td><td class="mono">Not prorated</td></tr>
+              <tr><td>Mixed</td><td class="mono">$9.50 cash + 9.17 GETY shares</td><td class="mono">Default election</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note" style="margin-top:10px">The cash election is subject to proration if oversubscribed; the stock election is not. No fractional Getty shares will be issued — fractional entitlements are settled in cash in lieu. Mixed is the default for holders who make no valid election.<sup>2,16</sup></div>
       </div>
+
       <div class="cell-b span6">
         <div class="lbl">Break-up fees — bilateral structure</div>
-        <table class="dtable" style="margin-top:4px">
-          <thead><tr><th>Scenario</th><th>Who pays</th><th>Amount</th></tr></thead>
-          <tbody>
-            <tr><td>Shutterstock walks for a superior proposal</td><td>SSTK → GETY</td><td class="mono">$32.7M</td></tr>
-            <tr><td>Getty terminates and completes a rival deal within 12 months</td><td>GETY → SSTK</td><td class="mono">$32.7M</td></tr>
-            <tr><td>Getty fails to fund the cash consideration (financing termination right)</td><td>GETY → SSTK</td><td class="mono">$40.0M</td></tr>
-          </tbody>
-        </table>
+        <div class="dtable-wrap" style="margin-top:4px">
+          <table class="dtable">
+            <thead><tr><th>Scenario</th><th>Who pays</th><th>Amount</th></tr></thead>
+            <tbody>
+              <tr><td>SSTK walks for a superior proposal</td><td>SSTK → GETY</td><td class="mono">$32.7M</td></tr>
+              <tr><td>GETY terminates; rival deal within 12 months</td><td>GETY → SSTK</td><td class="mono">$32.7M</td></tr>
+              <tr><td>GETY fails to fund the cash consideration</td><td>GETY → SSTK</td><td class="mono">$40.0M</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="note" style="margin-top:10px">Getty cannot be required to pay both fees; its maximum exposure is $40M.<sup>16</sup></div>
       </div>
+
       <div class="cell-b span6">
         <div class="lbl">Governance of the combined company</div>
-        <table class="dtable" style="margin-top:4px">
-          <tbody>
-            <tr><td>Name &amp; ticker</td><td>Getty Images Holdings, Inc. · NYSE: GETY</td></tr>
-            <tr><td>CEO</td><td>Craig Peters (Getty)</td></tr>
-            <tr><td>Chairman</td><td>Mark Getty (Getty)</td></tr>
-            <tr><td>Board</td><td>11 seats — 7 Getty (incl. CEO) · 4 Shutterstock (incl. Hennessy)</td></tr>
-          </tbody>
-        </table>
+        <div class="dtable-wrap" style="margin-top:4px">
+          <table class="dtable narrow">
+            <tbody>
+              <tr><td>Name &amp; ticker</td><td>Getty Images Holdings, Inc. · NYSE: GETY</td></tr>
+              <tr><td>CEO</td><td>Craig Peters (Getty)</td></tr>
+              <tr><td>Chairman</td><td>Mark Getty (Getty)</td></tr>
+              <tr><td>Board</td><td>11 seats — 7 Getty (incl. CEO) · 4 Shutterstock (incl. Hennessy)</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+
       <div class="cell-b span6">
         <div class="lbl">Pro-forma 2024 financial profile</div>
-        <table class="dtable" style="margin-top:4px">
-          <tbody>
-            <tr><td>Revenue</td><td class="mono">$1,979M – $1,993M</td></tr>
-            <tr><td>Subscription revenue share</td><td class="mono">~46%</td></tr>
-            <tr><td>Pre-synergy EBITDA</td><td class="mono">$569M – $574M</td></tr>
-            <tr><td>Adj. EBITDA less capex</td><td class="mono">$461M – $466M</td></tr>
-            <tr><td>Net leverage at signing</td><td class="mono">~3.0× pre-synergy EBITDA</td></tr>
-          </tbody>
-        </table>
+        <div class="dtable-wrap" style="margin-top:4px">
+          <table class="dtable narrow">
+            <tbody>
+              <tr><td>Revenue</td><td class="mono">$1,979M – $1,993M</td></tr>
+              <tr><td>Subscription revenue share</td><td class="mono">~46%</td></tr>
+              <tr><td>Pre-synergy EBITDA</td><td class="mono">$569M – $574M</td></tr>
+              <tr><td>Adj. EBITDA less capex</td><td class="mono">$461M – $466M</td></tr>
+              <tr><td>Net leverage at signing</td><td class="mono">~3.0× pre-synergy EBITDA</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="note" style="margin-top:10px">All pro-forma from the 7 Jan 2025 announcement.<sup>1</sup></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ MEDIA BAND ============================ -->
+<!-- MEDIA BAND -->
 <section class="mediaband">
   <div class="mb-media">
     <video autoplay muted loop playsinline onerror="this.style.display='none'">
@@ -549,7 +661,7 @@ footer{padding:64px 0 80px;background:#050610}
   </div>
 </section>
 
-<!-- ============================ TIMELINE ============================ -->
+<!-- TIMELINE -->
 <section class="band" id="timeline">
   <div class="wrap">
     <div class="sec-head">
@@ -631,7 +743,7 @@ footer{padding:64px 0 80px;background:#050610}
   </div>
 </section>
 
-<!-- ============================ LENS 1: CORPORATE ACTIONS ============================ -->
+<!-- LENS 1: CORPORATE ACTIONS -->
 <section class="band" id="corp">
   <div class="wrap">
     <div class="lens-head r"><span class="num">LENS 01</span><span class="kicker muted">Operations &amp; securities servicing</span></div>
@@ -646,14 +758,14 @@ footer{padding:64px 0 80px;background:#050610}
         <ul>
           <li>Surviving listed issuer: Getty Images Holdings, Inc. (NYSE: GETY).</li>
           <li>Shutterstock (NYSE: SSTK) shares are cancelled at close; the line is delisted and the CUSIP retired.</li>
-          <li>Cash election fixed at $28.84870/share; stock election fixed at 13.67237 Getty shares; mixed election fixed at $9.50 cash plus 9.17 Getty shares.</li>
+          <li>Cash election fixed at $28.84870/share; stock election fixed at 13.67237 Getty shares per SSTK share; mixed election fixed at $9.50 cash plus 9.17 Getty shares (the default).</li>
         </ul>
       </div>
       <div class="card">
         <h4>Mechanics ops teams must monitor</h4>
         <ul>
-          <li><b>Election window and default:</b> holders who make no valid election are generally treated as making a mixed election.</li>
-          <li><b>Proration:</b> cash elections are prorated if the cash pool is oversubscribed; stock elections are prorated if the stock pool is oversubscribed.</li>
+          <li><b>Election window and default:</b> holders who make no valid election are treated as making a mixed election.</li>
+          <li><b>Proration:</b> the cash election is subject to proration if the cash pool is oversubscribed. The stock election is not subject to proration — the exchange ratio is fixed regardless of the number of stock elections.</li>
           <li><b>Fractional shares:</b> no fractional Getty shares will be issued; fractional entitlements are settled in cash in lieu.</li>
           <li><b>Tax treatment:</b> the parties intend the transaction to qualify as a tax-deferred reorganization for U.S. federal income tax purposes. Cash received, including cash in lieu of fractional shares, may cause taxable gain recognition. Not tax advice.</li>
         </ul>
@@ -673,21 +785,23 @@ footer{padding:64px 0 80px;background:#050610}
         <p>The deal spawned its own debt corporate action: $628.4M of 10.500% senior secured notes issued and escrowed.<sup>6</sup></p>
         <ul>
           <li>If the merger is not consummated by 6 Oct 2026, the notes are subject to special mandatory redemption at 100% of issue price plus accrued and unpaid interest.</li>
-          <li>Interest is scheduled semiannually on 15 May and 15 November, beginning 15 May 2026; 6 Oct 2026 is the merger outside-date redemption trigger, not a scheduled interest-payment date.</li>
+          <li>Interest is scheduled semiannually on 15 May and 15 November, beginning 15 May 2026.</li>
           <li>A live example of acquisition financing riding alongside an equity event, with its own redemption trigger for fixed-income servicing teams.</li>
         </ul>
       </div>
       <div class="card">
         <h4>Key dates for instruction</h4>
-        <table class="dtable" style="margin-top:4px">
-          <tbody>
-            <tr><td>Announcement</td><td class="mono">07 Jan 2025</td></tr>
-            <tr><td>Target stockholder vote</td><td class="mono">10 Jun 2025</td></tr>
-            <tr><td>US DOJ clearance</td><td class="mono">23 Feb 2026</td></tr>
-            <tr><td>UK CMA conditional clearance</td><td class="mono">15 May 2026</td></tr>
-            <tr><td>Outside date / escrow trigger</td><td class="mono">06 Oct 2026</td></tr>
-          </tbody>
-        </table>
+        <div class="dtable-wrap" style="margin-top:4px">
+          <table class="dtable narrow">
+            <tbody>
+              <tr><td>Announcement</td><td class="mono">07 Jan 2025</td></tr>
+              <tr><td>Target stockholder vote</td><td class="mono">10 Jun 2025</td></tr>
+              <tr><td>US DOJ clearance</td><td class="mono">23 Feb 2026</td></tr>
+              <tr><td>UK CMA conditional clearance</td><td class="mono">15 May 2026</td></tr>
+              <tr><td>Outside date / escrow trigger</td><td class="mono">06 Oct 2026</td></tr>
+            </tbody>
+          </table>
+        </div>
         <p style="margin-top:14px;color:var(--paper-dim);font-size:.93rem">Close is <b style="color:var(--paper)">conditional</b> on completing the CMA-mandated editorial divestiture. No definitive record/payment date for the equity exchange has been set.</p>
       </div>
       <div class="card">
@@ -703,7 +817,7 @@ footer{padding:64px 0 80px;background:#050610}
   </div>
 </section>
 
-<!-- ============================ LENS 2: M&A ADVISORY ============================ -->
+<!-- LENS 2: M&A ADVISORY -->
 <section class="band" id="advisory">
   <div class="wrap">
     <div class="lens-head r"><span class="num">LENS 02</span><span class="kicker muted">Strategy &amp; value creation</span></div>
@@ -750,7 +864,7 @@ footer{padding:64px 0 80px;background:#050610}
   </div>
 </section>
 
-<!-- ============================ LENS 3: REGULATORS ============================ -->
+<!-- LENS 3: REGULATORS -->
 <section class="band" id="regulators">
   <div class="wrap">
     <div class="lens-head r"><span class="num">LENS 03</span><span class="kicker muted">Multi-jurisdiction antitrust</span></div>
@@ -797,7 +911,7 @@ footer{padding:64px 0 80px;background:#050610}
   </div>
 </section>
 
-<!-- ============================ FINANCING ============================ -->
+<!-- FINANCING -->
 <section class="band" id="finance">
   <div class="wrap">
     <div class="sec-head">
@@ -833,40 +947,44 @@ footer{padding:64px 0 80px;background:#050610}
   </div>
 </section>
 
-<!-- ============================ COMPANY PROFILES ============================ -->
+<!-- COMPANY PROFILES -->
 <section class="band" id="companies">
   <div class="wrap">
     <div class="sec-head"><div><div class="idx r">/ 05 — The two brands</div><h2 class="r d1">Who is combining</h2></div></div>
     <div class="grid2 r d1">
       <div class="card">
         <h4>Getty Images Holdings, Inc.</h4>
-        <table class="dtable">
-          <tbody>
-            <tr><td>Ticker</td><td class="mono">NYSE: GETY</td></tr>
-            <tr><td>Headquarters</td><td>Seattle, Washington</td></tr>
-            <tr><td>FY2024 revenue</td><td class="mono">$939.3M</td></tr>
-            <tr><td>FY2025 revenue</td><td class="mono">$981.3M (record)<sup>14</sup></td></tr>
-            <tr><td>Profile</td><td>Premium creative &amp; editorial imagery, exclusive event coverage<sup>11,14</sup></td></tr>
-          </tbody>
-        </table>
+        <div class="dtable-wrap">
+          <table class="dtable narrow">
+            <tbody>
+              <tr><td>Ticker</td><td class="mono">NYSE: GETY</td></tr>
+              <tr><td>Headquarters</td><td>Seattle, Washington</td></tr>
+              <tr><td>FY2024 revenue</td><td class="mono">$939.3M</td></tr>
+              <tr><td>FY2025 revenue</td><td class="mono">$981.3M (record)<sup>14</sup></td></tr>
+              <tr><td>Profile</td><td>Premium creative &amp; editorial imagery, exclusive event coverage<sup>11,14</sup></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="card">
         <h4 style="color:var(--cobalt)">Shutterstock, Inc.</h4>
-        <table class="dtable">
-          <tbody>
-            <tr><td>Ticker</td><td class="mono">NYSE: SSTK</td></tr>
-            <tr><td>Founded</td><td>2002 · Jon Oringer</td></tr>
-            <tr><td>Headquarters</td><td>Empire State Building, New York</td></tr>
-            <tr><td>FY2025 revenue</td><td class="mono">$989.9M<sup>17</sup></td></tr>
-            <tr><td>Notable units</td><td>Giphy, Envato, Pond5, TurboSquid, PremiumBeat, Splash News, Backgrid<sup>15</sup></td></tr>
-          </tbody>
-        </table>
+        <div class="dtable-wrap">
+          <table class="dtable narrow">
+            <tbody>
+              <tr><td>Ticker</td><td class="mono">NYSE: SSTK</td></tr>
+              <tr><td>Founded</td><td>2002 · Jon Oringer</td></tr>
+              <tr><td>Headquarters</td><td>Empire State Building, New York</td></tr>
+              <tr><td>FY2025 revenue</td><td class="mono">$989.9M<sup>17</sup></td></tr>
+              <tr><td>Notable units</td><td>Giphy, Envato, Pond5, TurboSquid, PremiumBeat, Splash News, Backgrid<sup>15</sup></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ SOURCES ============================ -->
+<!-- SOURCES -->
 <section class="band" id="sources">
   <div class="wrap">
     <div class="sec-head">
@@ -895,7 +1013,7 @@ footer{padding:64px 0 80px;background:#050610}
   </div>
 </section>
 
-<!-- ============================ FOOTER ============================ -->
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot-top">
@@ -907,11 +1025,35 @@ footer{padding:64px 0 80px;background:#050610}
 </footer>
 
 <script>
+/* ============================ HAMBURGER ============================ */
+const hamburger = document.getElementById("hamburger");
+const mobMenu   = document.getElementById("mobMenu");
+const mobClose  = document.getElementById("mobClose");
+
+function openMenu(){
+  hamburger.classList.add("open");
+  mobMenu.classList.add("open");
+  mobMenu.setAttribute("aria-hidden","false");
+  hamburger.setAttribute("aria-expanded","true");
+  document.body.style.overflow="hidden";
+}
+function closeMenu(){
+  hamburger.classList.remove("open");
+  mobMenu.classList.remove("open");
+  mobMenu.setAttribute("aria-hidden","true");
+  hamburger.setAttribute("aria-expanded","false");
+  document.body.style.overflow="";
+}
+hamburger.addEventListener("click", ()=> mobMenu.classList.contains("open") ? closeMenu() : openMenu());
+mobClose.addEventListener("click", closeMenu);
+document.querySelectorAll(".mob-link").forEach(a => a.addEventListener("click", closeMenu));
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeMenu(); });
+
 /* ============================ FINNHUB ============================ */
-const FINNHUB_KEY  = "d7mjle9r01qngrvof0vgd7mjle9r01qngrvof100";
-const CASH_REF     = 28.8487;
-const POLL_MS      = 20000;
-const SYMS         = ["GETY","SSTK"];
+const FINNHUB_KEY = "d7mjle9r01qngrvof0vgd7mjle9r01qngrvof100";
+const CASH_REF    = 28.8487;
+const POLL_MS     = 20000;
+const SYMS        = ["GETY","SSTK"];
 
 const fmt = (n,d=2) => (n==null||isNaN(n)) ? "—"
   : Number(n).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -964,8 +1106,7 @@ function paintTicker(qs){
     `<span class="cell">US DOJ <b>UNCONDITIONAL</b></span>`,
     `<span class="cell">OUTSIDE DATE <b>06 OCT 2026</b></span>`,
   ].join("");
-  const block = cells+info;
-  document.getElementById("tickerTrack").innerHTML = block+block;
+  document.getElementById("tickerTrack").innerHTML = (cells+info).repeat(2);
 }
 
 async function refresh(){
