@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Getty Images × Shutterstock — The $3.7B Merger of Equals</title>
-<meta name="description" content="Corporate actions, M&A advisory, and international-regulatory analysis of the Getty Images / Shutterstock merger of equals." />
+<title>Getty Images x Shutterstock: $3.7B Merger, Terminated</title>
+<meta name="description" content="Corporate actions, M&A advisory, and international-regulatory analysis of the Getty Images / Shutterstock merger of equals. Deal terminated July 6, 2026." />
 
 <!--
 ================================================================================
@@ -18,7 +18,7 @@
 
   DEPLOY
   Commit index.html + /assets to your repo.
-  GitHub Pages → Settings → Pages → Branch: main, folder: /root.
+  GitHub Pages -> Settings -> Pages -> Branch: main, folder: /root.
 ================================================================================
 -->
 
@@ -36,6 +36,7 @@
   --cobalt-lt:#4B8FFF;
   --us:       #1E6FFF;
   --uk:       #E8622A;
+  --terminated:#E8622A;
   --panel:    #090A14;
   --panel-2:  #0D0E1A;
   --line:     rgba(221,227,238,.11);
@@ -69,10 +70,23 @@ img,video{display:block;max-width:100%}
 .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.34em;
   text-transform:uppercase;color:var(--cobalt);font-weight:500}
 .kicker.muted{color:var(--grey)}
+.kicker.terminated{color:var(--terminated)}
 sup{color:var(--cobalt);font-family:var(--mono);font-size:.6em}
 
+/* ============================ TERMINATED RIBBON ============================ */
+.terminated-ribbon{
+  background:var(--terminated);
+  color:#fff;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.26em;
+  text-transform:uppercase;text-align:center;
+  padding:10px 20px;
+  position:relative;z-index:201;
+  font-weight:600;
+}
+.terminated-ribbon span{opacity:.7;font-weight:400;letter-spacing:.14em;margin-left:16px}
+
 /* ============================ NAV ============================ */
-header.nav{position:fixed;top:0;left:0;right:0;z-index:200;
+header.nav{position:fixed;top:36px;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:space-between;padding:16px 28px;
   background:linear-gradient(to bottom,rgba(6,7,13,.92),rgba(6,7,13,0));
   transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
@@ -132,7 +146,7 @@ header.nav.solid{background:rgba(6,7,13,.97);border-bottom:1px solid var(--line)
   width:38px;height:38px;display:flex;align-items:center;justify-content:center;
   font-size:1rem;color:var(--paper-dim);cursor:pointer;
   border:1px solid var(--line-strong);background:none;
-  font-family:var(--mono);transition:color .2s,border-color .2s;
+  font-family:var(--mono);transition:color .2s;
 }
 .mob-menu .m-close:hover{color:var(--paper)}
 
@@ -144,8 +158,8 @@ header.nav.solid{background:rgba(6,7,13,.97);border-bottom:1px solid var(--line)
   filter:grayscale(1) contrast(1.1) brightness(.36)}
 .hero-media::before{content:"";position:absolute;inset:0;
   background:
-    radial-gradient(140% 90% at 5% 0%,rgba(30,111,255,.16),transparent 52%),
-    radial-gradient(80% 70% at 98% 100%,rgba(232,98,42,.09),transparent 55%),
+    radial-gradient(140% 90% at 5% 0%,rgba(30,111,255,.14),transparent 52%),
+    radial-gradient(80% 70% at 98% 100%,rgba(232,98,42,.11),transparent 55%),
     repeating-linear-gradient(113deg,rgba(221,227,238,.025) 0 2px,transparent 2px 30px),
     var(--ink)}
 .hero-shade{position:absolute;inset:0;z-index:1;
@@ -158,6 +172,7 @@ header.nav.solid{background:rgba(6,7,13,.97);border-bottom:1px solid var(--line)
 .pill.live{color:var(--paper);border-color:rgba(30,111,255,.4)}
 .pill.live i{display:inline-block;width:7px;height:7px;border-radius:50%;
   background:var(--cobalt);margin-right:8px;animation:blink 1.8s infinite}
+.pill.dead{color:var(--terminated);border-color:rgba(232,98,42,.5)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
 h1.headline{font-family:var(--display);font-weight:900;line-height:.86;
@@ -169,6 +184,7 @@ h1.headline .blue{color:var(--cobalt);font-style:italic;font-weight:400}
 .hero-meta{margin-top:30px;display:flex;gap:40px;flex-wrap:wrap;
   font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--grey)}
 .hero-meta span b{color:var(--paper);font-weight:500}
+.hero-meta span.alert b{color:var(--terminated)}
 
 .reveal-word{display:inline-block;overflow:hidden;vertical-align:top}
 .reveal-word>span{display:inline-block;transform:translateY(105%);
@@ -177,16 +193,6 @@ h1.headline .blue{color:var(--cobalt);font-style:italic;font-weight:400}
 .fade-up{opacity:0;transform:translateY(22px);animation:fadeUp .9s cubic-bezier(.16,1,.3,1) forwards}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 
-/* ticker */
-.tickerbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:#080A14;overflow:hidden;white-space:nowrap}
-.tickerbar .track{display:inline-flex;animation:marq 44s linear infinite}
-.tickerbar:hover .track{animation-play-state:paused}
-@keyframes marq{to{transform:translateX(-50%)}}
-.tickerbar .cell{display:inline-flex;align-items:center;gap:12px;padding:13px 30px;
-  font-family:var(--mono);font-size:.77rem;letter-spacing:.06em;
-  border-right:1px solid var(--line);color:var(--paper-dim)}
-.tickerbar .cell b{color:var(--paper)}
 .up{color:#34D171}.down{color:var(--uk)}
 
 /* ============================ SECTION SHELL ============================ */
@@ -208,7 +214,7 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
 @media(prefers-reduced-motion:reduce){
   .r{opacity:1;transform:none;transition:none}
   .reveal-word>span,.fade-up{animation:none;transform:none;opacity:1}
-  .tickerbar .track{animation:none}}
+}
 
 /* ============================ LIVE QUOTES ============================ */
 .quotes-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;
@@ -221,7 +227,6 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
   background:radial-gradient(120% 120% at 0 0,rgba(221,227,238,.04),transparent 55%)}
 .qcard.sstk::before{content:"";position:absolute;inset:0;
   background:radial-gradient(130% 130% at 100% 0,rgba(30,111,255,.09),transparent 55%)}
-
 .qcard .q-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px}
 .qcard .q-left .sym{font-family:var(--display);font-weight:900;
   font-size:2.1rem;letter-spacing:-.02em;line-height:1}
@@ -232,18 +237,15 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
   color:var(--grey);text-transform:uppercase}
 .qcard .q-right .role{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;
   color:var(--grey);margin-top:3px;text-transform:uppercase}
-
 .qcard .q-price{font-family:var(--mono);font-weight:600;font-size:3.4rem;
   letter-spacing:-.03em;line-height:1;margin-bottom:10px}
 .qcard .q-chg{font-family:var(--mono);font-size:.92rem;margin-bottom:26px}
 .qcard .q-chg.up{color:#34D171}.qcard .q-chg.down{color:var(--uk)}.qcard .q-chg.flat{color:var(--grey)}
-
 .qcard .q-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
   border-top:1px solid var(--line);padding-top:20px}
 .qcard .q-stat .lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--grey);margin-bottom:5px}
 .qcard .q-stat .val{font-family:var(--mono);font-size:.92rem;font-weight:500;color:var(--paper)}
-
 .qstrip{background:var(--panel-2);border:1px solid var(--line);border-top:none;
   padding:16px 28px;display:flex;gap:32px;flex-wrap:wrap;align-items:center;
   font-family:var(--mono);font-size:.75rem;color:var(--paper-dim)}
@@ -254,11 +256,14 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
 .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1px;
   background:var(--line);border:1px solid var(--line)}
 .cell-b{background:var(--panel);padding:30px 28px}
+.cell-b.alert-cell{background:rgba(232,98,42,.08);border-left:3px solid var(--terminated)}
 .cell-b .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;
   text-transform:uppercase;color:var(--grey);margin-bottom:16px}
+.cell-b.alert-cell .lbl{color:var(--terminated)}
 .cell-b .big{font-family:var(--display);font-weight:900;line-height:.93;
   font-size:clamp(2rem,4vw,3.1rem);letter-spacing:-.02em}
 .cell-b .big .u{color:var(--cobalt)}
+.cell-b.alert-cell .big{color:var(--terminated)}
 .cell-b .note{margin-top:12px;font-size:.86rem;color:var(--paper-dim)}
 .span3{grid-column:span 3}.span4{grid-column:span 4}.span6{grid-column:span 6}
 .span8{grid-column:span 8}.span12{grid-column:span 12}
@@ -272,7 +277,6 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
   text-transform:uppercase;color:var(--grey);font-weight:500;white-space:nowrap}
 .dtable td{color:var(--paper-dim)}.dtable td:first-child{color:var(--paper);font-weight:500}
 .dtable tr:last-child td{border-bottom:none}
-/* two-col tables don't need min-width */
 .dtable.narrow{min-width:0}
 
 /* ============================ TIMELINE ============================ */
@@ -282,6 +286,7 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
 .legend .deal i{background:var(--paper)}
 .legend .us i{background:var(--us)}
 .legend .uk i{background:var(--uk)}
+.legend .end i{background:var(--terminated)}
 .tl{position:relative;margin-left:8px}
 .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;
   width:2px;background:var(--line-strong)}
@@ -290,10 +295,13 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
 .tl-item .dot{position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:50%;
   border:3px solid var(--ink);background:var(--paper);box-shadow:0 0 0 1px var(--line-strong)}
 .tl-item.us .dot{background:var(--us)}.tl-item.uk .dot{background:var(--uk)}
+.tl-item.end .dot{background:var(--terminated);box-shadow:0 0 0 3px rgba(232,98,42,.3)}
 .tl-item .date{font-family:var(--mono);font-size:.71rem;letter-spacing:.12em;
   color:var(--grey);text-transform:uppercase}
+.tl-item.end .date{color:var(--terminated)}
 .tl-item h4{font-family:var(--display);font-weight:600;font-size:1.18rem;
   margin:5px 0 6px;letter-spacing:-.01em}
+.tl-item.end h4{color:var(--terminated)}
 .tl-item p{color:var(--paper-dim);font-size:.93rem;max-width:640px}
 .tag-ph{display:inline-block;font-family:var(--mono);font-size:.59rem;letter-spacing:.14em;
   text-transform:uppercase;padding:2px 8px;border:1px solid var(--line-strong);
@@ -306,14 +314,17 @@ section.band{padding:108px 0;position:relative;border-bottom:1px solid var(--lin
   border:1px solid var(--line)}
 @media(max-width:820px){.grid2{grid-template-columns:1fr}}
 .card{background:var(--panel);padding:30px 28px}
+.card.alert-card{background:rgba(232,98,42,.06);border-top:2px solid var(--terminated)}
 .card h4{font-family:var(--display);font-weight:600;font-size:1.22rem;
   margin-bottom:12px;letter-spacing:-.01em}
+.card.alert-card h4{color:var(--terminated)}
 .card p{color:var(--paper-dim);font-size:.93rem;margin-bottom:10px}
 .card ul{list-style:none;margin-top:10px}
 .card ul li{color:var(--paper-dim);font-size:.92rem;padding-left:20px;
   position:relative;margin-bottom:9px}
 .card ul li::before{content:"";position:absolute;left:0;top:.62em;
   width:7px;height:1px;background:var(--cobalt)}
+.card.alert-card ul li::before{background:var(--terminated)}
 
 /* split */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
@@ -374,7 +385,7 @@ footer{padding:64px 0 80px;background:#050610}
 @media(max-width:820px){
   .navlinks{display:none}
   .hamburger{display:flex}
-  header.nav{padding:14px 20px}
+  header.nav{padding:14px 20px;top:36px}
   .brandmark{font-size:.7rem;gap:8px}
 }
 @media(max-width:700px){
@@ -388,7 +399,7 @@ footer{padding:64px 0 80px;background:#050610}
   .hero-meta{gap:14px;font-size:.66rem}
   .hero-tag{gap:8px}
   .pill{font-size:.6rem;padding:5px 10px;letter-spacing:.14em}
-  .tickerbar .cell{padding:10px 18px;font-size:.72rem}
+
   .mediaband{min-height:40vh}
   .mediaband blockquote{font-size:clamp(1.2rem,5.5vw,1.9rem)}
   .foot-top{flex-direction:column;gap:8px}
@@ -403,6 +414,8 @@ footer{padding:64px 0 80px;background:#050610}
   .src{padding:16px 16px}
   .legend{gap:12px;font-size:.67rem}
   .sec-head h2{font-size:clamp(1.6rem,7.5vw,2.4rem)}
+  .terminated-ribbon{font-size:.62rem;letter-spacing:.16em;padding:9px 14px}
+  .terminated-ribbon span{display:block;margin-left:0;margin-top:4px}
 }
 @media(max-width:480px){
   .qcard{padding:22px 18px}
@@ -415,9 +428,14 @@ footer{padding:64px 0 80px;background:#050610}
 <body>
 <div class="grain"></div>
 
+<!-- TERMINATED RIBBON -->
+<div class="terminated-ribbon" role="alert">
+  DEAL TERMINATED <span>Getty board voted unanimously to reject CMA condition. Merger agreement terminated 06 Jul 2026</span>
+</div>
+
 <!-- MOBILE MENU -->
 <div class="mob-menu" id="mobMenu" aria-hidden="true">
-  <button class="m-close" id="mobClose" aria-label="Close menu">✕</button>
+  <button class="m-close" id="mobClose" aria-label="Close menu">X</button>
   <div class="m-label">Navigation</div>
   <a href="#deal"       class="mob-link">The Deal</a>
   <a href="#timeline"   class="mob-link">Timeline</a>
@@ -429,7 +447,7 @@ footer{padding:64px 0 80px;background:#050610}
 
 <!-- NAV -->
 <header class="nav" id="nav">
-  <div class="brandmark"><b>GETTY IMAGES</b><span class="x">×</span><b>SHUTTERSTOCK</b></div>
+  <div class="brandmark"><b>GETTY IMAGES</b><span class="x">x</span><b>SHUTTERSTOCK</b></div>
   <nav class="navlinks">
     <a href="#deal">The Deal</a>
     <a href="#timeline">Timeline</a>
@@ -455,6 +473,7 @@ footer{padding:64px 0 80px;background:#050610}
   <div class="hero-inner">
     <div class="wrap">
       <div class="hero-tag">
+        <span class="pill dead">Deal Terminated</span>
         <span class="pill">Corporate Actions Study</span>
         <span class="pill">Merger of Equals · Stock-for-Stock</span>
         <span class="pill live"><i></i>Live NYSE Quotes</span>
@@ -465,28 +484,23 @@ footer{padding:64px 0 80px;background:#050610}
         <span class="reveal-word"><span class="blue" style="animation-delay:.18s">SHUTTERSTOCK</span></span>
       </h1>
       <p class="hero-sub fade-up" style="animation-delay:.5s">
-        Two of the world's largest visual-content marketplaces agreed to combine in a
-        <b>$3.7&nbsp;billion merger of equals.</b> Examined through three lenses: the
+        A <b>$3.7 billion merger of equals</b> announced January 2025 and terminated July 6, 2026
+        after Getty's board unanimously rejected the UK CMA's condition requiring Shutterstock
+        to divest its entire global editorial business. Examined through three lenses: the
         <b>corporate action</b> itself, the <b>M&amp;A advisory</b> thesis, and the
-        <b>international regulators</b> who reshaped it.<sup>1</sup>
+        <b>international regulators</b> who killed it.<sup>1,18</sup>
       </p>
       <div class="hero-meta fade-up" style="animation-delay:.68s">
         <span>ANNOUNCED <b>07 JAN 2025</b></span>
-        <span>SURVIVOR <b>NYSE: GETY</b></span>
         <span>EV <b>~$3.7B</b></span>
-        <span>STATUS <b>CONDITIONALLY CLEARED</b></span>
-        <span>OUTSIDE DATE <b>06 OCT 2026</b></span>
+        <span class="alert">STATUS <b>TERMINATED</b></span>
+        <span class="alert">TERMINATED <b>06 JUL 2026</b></span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="tickerbar" aria-hidden="true">
-  <div class="track" id="tickerTrack">
-    <span class="cell">LOADING LIVE QUOTES…</span>
-  </div>
-</div>
+
 
 <!-- LIVE QUOTES -->
 <section class="band" id="quotes" style="padding:72px 0">
@@ -494,9 +508,9 @@ footer{padding:64px 0 80px;background:#050610}
     <div class="sec-head">
       <div>
         <div class="idx r">/ Live market data</div>
-        <h2 class="r d1">Both tickers still trade</h2>
+        <h2 class="r d1">Both companies now trade as standalones</h2>
       </div>
-      <p class="sec-intro r d2">The deal has not closed. GETY and SSTK remain independently listed while the CMA-mandated divestiture of Shutterstock's editorial business works toward an approved buyer.</p>
+      <p class="sec-intro r d2">The merger is terminated. GETY and SSTK are independent, competing companies again. SSTK fell approximately 29% on the termination announcement, erasing the merger premium that had sustained the stock since January 2025.<sup>18</sup></p>
     </div>
     <div class="quotes-row r d1">
       <div class="qcard getty" id="card-GETY">
@@ -507,16 +521,16 @@ footer{padding:64px 0 80px;background:#050610}
           </div>
           <div class="q-right">
             <div class="ex">NYSE</div>
-            <div class="role">Surviving issuer</div>
+            <div class="role">Standalone</div>
           </div>
         </div>
-        <div class="q-price" data-price>—</div>
+        <div class="q-price" data-price>--</div>
         <div class="q-chg flat" data-chg>Awaiting data</div>
         <div class="q-stats">
-          <div class="q-stat"><div class="lbl">Open</div><div class="val" data-open>—</div></div>
-          <div class="q-stat"><div class="lbl">High</div><div class="val" data-high>—</div></div>
-          <div class="q-stat"><div class="lbl">Low</div><div class="val" data-low>—</div></div>
-          <div class="q-stat"><div class="lbl">Prev close</div><div class="val" data-pc>—</div></div>
+          <div class="q-stat"><div class="lbl">Open</div><div class="val" data-open>--</div></div>
+          <div class="q-stat"><div class="lbl">High</div><div class="val" data-high>--</div></div>
+          <div class="q-stat"><div class="lbl">Low</div><div class="val" data-low>--</div></div>
+          <div class="q-stat"><div class="lbl">Prev close</div><div class="val" data-pc>--</div></div>
         </div>
       </div>
       <div class="qcard sstk" id="card-SSTK">
@@ -527,25 +541,24 @@ footer{padding:64px 0 80px;background:#050610}
           </div>
           <div class="q-right">
             <div class="ex">NYSE</div>
-            <div class="role">Target</div>
+            <div class="role">Standalone</div>
           </div>
         </div>
-        <div class="q-price" data-price>—</div>
+        <div class="q-price" data-price>--</div>
         <div class="q-chg flat" data-chg>Awaiting data</div>
         <div class="q-stats">
-          <div class="q-stat"><div class="lbl">Open</div><div class="val" data-open>—</div></div>
-          <div class="q-stat"><div class="lbl">High</div><div class="val" data-high>—</div></div>
-          <div class="q-stat"><div class="lbl">Low</div><div class="val" data-low>—</div></div>
-          <div class="q-stat"><div class="lbl">Prev close</div><div class="val" data-pc>—</div></div>
+          <div class="q-stat"><div class="lbl">Open</div><div class="val" data-open>--</div></div>
+          <div class="q-stat"><div class="lbl">High</div><div class="val" data-high>--</div></div>
+          <div class="q-stat"><div class="lbl">Low</div><div class="val" data-low>--</div></div>
+          <div class="q-stat"><div class="lbl">Prev close</div><div class="val" data-pc>--</div></div>
         </div>
       </div>
     </div>
     <div class="qstrip r d2">
-      <div>CASH ELECTION REFERENCE <b class="blue">$28.8487 / SSTK share</b></div>
-      <div>SSTK vs CASH ELECTION <b data-spread>—</b></div>
-      <div>UPDATED <b data-updated>—</b></div>
+      <div>CASH ELECTION REFERENCE <b>$28.8487</b> <b style="color:var(--terminated)">(ELECTION UNWOUND)</b></div>
+      <div>UPDATED <b data-updated>--</b></div>
     </div>
-    <div class="qnote" id="qnote">Quotes via Finnhub — indicative, possibly delayed. Not investment advice.</div>
+    <div class="qnote" id="qnote">Quotes via Finnhub -- indicative, possibly delayed. Not investment advice.</div>
   </div>
 </section>
 
@@ -553,10 +566,15 @@ footer{padding:64px 0 80px;background:#050610}
 <section class="band" id="deal">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="idx r">/ 01 — The transaction</div><h2 class="r d1">Deal at a glance</h2></div>
-      <p class="sec-intro r d2">A merger of equals: Getty Images is the surviving listed company; Shutterstock stockholders elect cash, all-stock, or a mix. Bilateral break-up fees and a hard October 2026 outside date.<sup>1,2</sup></p>
+      <div><div class="idx r">/ 01 -- The transaction</div><h2 class="r d1">Deal at a glance</h2></div>
+      <p class="sec-intro r d2">A merger of equals announced January 2025 and terminated July 2026 after the UK CMA imposed a divestiture condition Getty's board unanimously rejected. All elections and associated mechanics are unwound.<sup>1,2,18</sup></p>
     </div>
     <div class="bento r d1">
+      <div class="cell-b span3 alert-cell">
+        <div class="lbl">Deal status</div>
+        <div style="font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,2.8vw,2.2rem);letter-spacing:-.02em;line-height:1;color:var(--terminated)">DEAL<br>TERMINATED</div>
+        <div class="note" style="margin-top:14px">Getty board vote: 30 Jun 2026.<br>Effective: 06 Jul 2026.<sup>18</sup></div>
+      </div>
       <div class="cell-b span3">
         <div class="lbl">Enterprise value</div>
         <div class="big"><span class="u">$</span><span class="count" data-to="3.7" data-dec="1">0.0</span>B</div>
@@ -565,21 +583,16 @@ footer{padding:64px 0 80px;background:#050610}
       <div class="cell-b span3">
         <div class="lbl">Getty ownership</div>
         <div class="big"><span class="count" data-to="54.7" data-dec="1">0</span><span class="u">%</span></div>
-        <div class="note">Fully diluted shares immediately post-close.<sup>2</sup></div>
+        <div class="note">As negotiated -- never implemented.<sup>2</sup></div>
       </div>
       <div class="cell-b span3">
         <div class="lbl">Shutterstock ownership</div>
         <div class="big"><span class="count" data-to="45.3" data-dec="1">0</span><span class="u">%</span></div>
-        <div class="note">Fully diluted shares immediately post-close.<sup>2</sup></div>
-      </div>
-      <div class="cell-b span3">
-        <div class="lbl">Annual cost synergies</div>
-        <div class="big"><span class="u">$</span><span class="count" data-to="150" data-dec="0">0</span>–200M</div>
-        <div class="note">Targeted year three; accretive from year two.<sup>1</sup></div>
+        <div class="note">As negotiated -- never implemented.<sup>2</sup></div>
       </div>
 
       <div class="cell-b span6">
-        <div class="lbl">Shutterstock stockholder elections at close</div>
+        <div class="lbl">Shutterstock stockholder elections -- unwound</div>
         <div class="dtable-wrap" style="margin-top:4px">
           <table class="dtable">
             <thead><tr><th>Election</th><th>Consideration per SSTK share</th><th>Proration</th></tr></thead>
@@ -590,52 +603,53 @@ footer{padding:64px 0 80px;background:#050610}
             </tbody>
           </table>
         </div>
-        <div class="note" style="margin-top:10px">The cash election is subject to proration if oversubscribed; the stock election is not. No fractional Getty shares will be issued — fractional entitlements are settled in cash in lieu. Mixed is the default for holders who make no valid election.<sup>2,16</sup></div>
+        <div class="note" style="margin-top:10px">Both cash and stock elections were subject to proration. Mixed was the default. The election event is now unwound -- no consideration will be paid and no shares exchanged.<sup>2,16,18</sup></div>
       </div>
 
       <div class="cell-b span6">
-        <div class="lbl">Break-up fees — bilateral structure</div>
+        <div class="lbl">Break-up fees -- bilateral structure</div>
         <div class="dtable-wrap" style="margin-top:4px">
           <table class="dtable">
             <thead><tr><th>Scenario</th><th>Who pays</th><th>Amount</th></tr></thead>
             <tbody>
-              <tr><td>SSTK walks for a superior proposal</td><td>SSTK → GETY</td><td class="mono">$32.7M</td></tr>
-              <tr><td>GETY terminates; rival deal within 12 months</td><td>GETY → SSTK</td><td class="mono">$32.7M</td></tr>
-              <tr><td>GETY fails to fund the cash consideration</td><td>GETY → SSTK</td><td class="mono">$40.0M</td></tr>
+              <tr><td>SSTK walks for a superior proposal</td><td>SSTK to GETY</td><td class="mono">$32.7M</td></tr>
+              <tr><td>GETY terminates; rival deal within 12 months</td><td>GETY to SSTK</td><td class="mono">$32.7M</td></tr>
+              <tr><td>GETY fails to fund the cash consideration</td><td>GETY to SSTK</td><td class="mono">$40.0M</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="note" style="margin-top:10px">Getty cannot be required to pay both fees; its maximum exposure is $40M.<sup>16</sup></div>
+        <div class="note" style="margin-top:10px">Termination occurred at the outside date on regulatory grounds. The primary Form 8-K and Form 425 describe this as an outside date termination, not a financing failure or superior proposal trigger. On this basis, no termination fee is payable between the parties. Some secondary sources assert a $40M fee is owed; this has not been confirmed in Getty's or Shutterstock's primary SEC filings.<sup>16,18</sup></div>
       </div>
 
       <div class="cell-b span6">
-        <div class="lbl">Governance of the combined company</div>
+        <div class="lbl">Governance of the combined company -- as proposed</div>
         <div class="dtable-wrap" style="margin-top:4px">
           <table class="dtable narrow">
             <tbody>
-              <tr><td>Name &amp; ticker</td><td>Getty Images Holdings, Inc. · NYSE: GETY</td></tr>
+              <tr><td>Name &amp; ticker</td><td>Getty Images Holdings, Inc. -- NYSE: GETY</td></tr>
               <tr><td>CEO</td><td>Craig Peters (Getty)</td></tr>
               <tr><td>Chairman</td><td>Mark Getty (Getty)</td></tr>
-              <tr><td>Board</td><td>11 seats — 7 Getty (incl. CEO) · 4 Shutterstock (incl. Hennessy)</td></tr>
+              <tr><td>Board</td><td>11 seats -- 7 Getty (incl. CEO) -- 4 Shutterstock (incl. Hennessy)</td></tr>
             </tbody>
           </table>
         </div>
+        <div class="note" style="margin-top:8px">Never implemented. Both companies remain independently governed.</div>
       </div>
 
       <div class="cell-b span6">
-        <div class="lbl">Pro-forma 2024 financial profile</div>
+        <div class="lbl">Pro-forma 2024 financial profile -- as announced</div>
         <div class="dtable-wrap" style="margin-top:4px">
           <table class="dtable narrow">
             <tbody>
-              <tr><td>Revenue</td><td class="mono">$1,979M – $1,993M</td></tr>
+              <tr><td>Revenue</td><td class="mono">$1,979M -- $1,993M</td></tr>
               <tr><td>Subscription revenue share</td><td class="mono">~46%</td></tr>
-              <tr><td>Pre-synergy EBITDA</td><td class="mono">$569M – $574M</td></tr>
-              <tr><td>Adj. EBITDA less capex</td><td class="mono">$461M – $466M</td></tr>
-              <tr><td>Net leverage at signing</td><td class="mono">~3.0× pre-synergy EBITDA</td></tr>
+              <tr><td>Pre-synergy EBITDA</td><td class="mono">$569M -- $574M</td></tr>
+              <tr><td>Cost synergies targeted</td><td class="mono">$150M -- $200M annually</td></tr>
+              <tr><td>Net leverage at signing</td><td class="mono">~3.0x pre-synergy EBITDA</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="note" style="margin-top:10px">All pro-forma from the 7 Jan 2025 announcement.<sup>1</sup></div>
+        <div class="note" style="margin-top:8px">All pro-forma from the 7 Jan 2025 announcement. Synergies never realized.<sup>1</sup></div>
       </div>
     </div>
   </div>
@@ -651,12 +665,12 @@ footer{padding:64px 0 80px;background:#050610}
   <div class="mb-shade"></div>
   <div class="mb-inner">
     <div class="wrap">
-      <div class="kicker r">The strategic backdrop</div>
+      <div class="kicker terminated r">The outcome</div>
       <blockquote class="r d1" style="margin-top:18px">
-        Two archives of the world's images, merging into one — under the shadow of
-        <b>generative AI</b> reshaping who needs to license a photograph at all.
+        Two archives of the world's images tried to merge to fight <b>generative AI</b> --
+        and are now, as standalones, cutting separate deals with the largest AI platform in the world.
       </blockquote>
-      <cite class="r d2">A defensive consolidation in a structurally pressured industry</cite>
+      <cite class="r d2">Getty: display rights to OpenAI. Shutterstock: training data to OpenAI. Same disruptor. Opposite sides of the table.</cite>
     </div>
   </div>
 </section>
@@ -665,79 +679,90 @@ footer{padding:64px 0 80px;background:#050610}
 <section class="band" id="timeline">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="idx r">/ 03 — How it unfolded</div><h2 class="r d1">The deal timeline</h2></div>
-      <p class="sec-intro r d2">Eighteen months from handshake to a conditional UK clearance — and two major regulators reaching opposite conclusions on the same transaction.</p>
+      <div><div class="idx r">/ 03 -- How it unfolded</div><h2 class="r d1">The deal timeline</h2></div>
+      <p class="sec-intro r d2">Eighteen months from announcement to termination. Two regulators, two conclusions, one outcome.</p>
     </div>
     <div class="legend r">
       <span class="deal"><i></i>Deal / corporate milestone</span>
-      <span class="us"><i></i>United States — DOJ</span>
-      <span class="uk"><i></i>United Kingdom — CMA</span>
+      <span class="us"><i></i>United States -- DOJ</span>
+      <span class="uk"><i></i>United Kingdom -- CMA</span>
+      <span class="end"><i></i>Termination</span>
     </div>
     <div class="tl">
       <div class="tl-item r"><div class="dot"></div>
-        <div class="date">06–07 Jan 2025</div>
+        <div class="date">06--07 Jan 2025</div>
         <h4>Definitive agreement signed and announced</h4>
-        <p>Getty and Shutterstock agree to a merger of equals with a pro-forma enterprise value of about $3.7&nbsp;billion.<sup>1</sup></p>
+        <p>Getty and Shutterstock agree to a merger of equals with a pro-forma enterprise value of about $3.7 billion.<sup>1</sup></p>
       </div>
       <div class="tl-item r"><div class="dot"></div>
-        <div class="date">31 Mar – 30 Apr 2025</div>
+        <div class="date">31 Mar -- 30 Apr 2025</div>
         <h4>Form S-4 filed, then declared effective</h4>
         <p>Registration statement filed 31 March, amended 28 April, declared effective 30 April 2025.<sup>5</sup></p>
       </div>
       <div class="tl-item r"><div class="dot"></div>
         <div class="date">10 Jun 2025</div>
         <h4>Shutterstock stockholders approve the merger</h4>
-        <p>Stockholders adopt the merger agreement at a special meeting — the required target-side vote.<sup>2</sup></p>
+        <p>Stockholders adopt the merger agreement at a special meeting -- the required target-side vote.<sup>2</sup></p>
       </div>
       <div class="tl-item uk r"><div class="dot"></div>
-        <div class="date">23 Jun – 22 Aug 2025</div>
-        <h4>CMA invites comments, then opens Phase 1<span class="tag-ph">UK · PHASE 1</span></h4>
+        <div class="date">23 Jun -- 22 Aug 2025</div>
+        <h4>CMA invites comments, then opens Phase 1<span class="tag-ph">UK -- PHASE 1</span></h4>
         <p>The CMA first invites third-party comments on 23 June 2025 and formally launches its Phase 1 merger inquiry on 22 August 2025.<sup>4,7</sup></p>
       </div>
       <div class="tl-item r"><div class="dot"></div>
         <div class="date">06 Oct 2025</div>
         <h4>$628.4M high-yield notes priced to fund the deal</h4>
-        <p>Getty prices 10.500% senior secured notes; proceeds held in escrow and redeemable if the deal does not close by 6 Oct 2026.<sup>6</sup></p>
+        <p>Getty prices 10.500% senior secured notes due 2030; proceeds held in escrow pending close. Indenture dated 21 October 2025.<sup>6</sup></p>
       </div>
       <div class="tl-item uk r"><div class="dot"></div>
         <div class="date">20 Oct 2025</div>
-        <h4>CMA finds possible substantial lessening of competition<span class="tag-ph">UK · PHASE 1</span></h4>
+        <h4>CMA finds possible substantial lessening of competition<span class="tag-ph">UK -- PHASE 1</span></h4>
         <p>Phase 1 decision: the merger may lessen competition in editorial and stock-content markets unless acceptable undertakings are offered.<sup>4,7</sup></p>
       </div>
       <div class="tl-item uk r"><div class="dot"></div>
         <div class="date">03 Nov 2025</div>
-        <h4>CMA rejects remedy package; refers to Phase 2<span class="tag-ph">UK · PHASE 2</span></h4>
+        <h4>CMA rejects remedy package; refers to Phase 2<span class="tag-ph">UK -- PHASE 2</span></h4>
         <p>Proposed undertakings tabled on the final permitted day were judged insufficient. The deal is referred for in-depth Phase 2 review.<sup>7,8</sup></p>
       </div>
       <div class="tl-item uk r"><div class="dot"></div>
         <div class="date">19 Feb 2026</div>
-        <h4>Phase 2 interim report: stock cleared, editorial flagged<span class="tag-ph">UK · PHASE 2</span></h4>
+        <h4>Phase 2 interim report: stock cleared, editorial flagged<span class="tag-ph">UK -- PHASE 2</span></h4>
         <p>No competition concern in global stock content. Provisional SLC in the UK editorial market.<sup>3,5</sup></p>
       </div>
       <div class="tl-item us r"><div class="dot"></div>
         <div class="date">23 Feb 2026</div>
-        <h4>US DOJ grants unconditional clearance<span class="tag-ph">US · DOJ</span></h4>
-        <p>The HSR waiting period expires without conditions — a clean approval that diverges sharply from the UK outcome.<sup>3</sup></p>
+        <h4>US DOJ grants unconditional clearance<span class="tag-ph">US -- DOJ</span></h4>
+        <p>The HSR waiting period expires without conditions -- a clean approval that diverges sharply from the UK outcome.<sup>3</sup></p>
       </div>
       <div class="tl-item uk r"><div class="dot"></div>
-        <div class="date">11–30 Mar 2026</div>
-        <h4>Remedies consultation, hearings, and extension<span class="tag-ph">UK · PHASE 2</span></h4>
+        <div class="date">11--30 Mar 2026</div>
+        <h4>Remedies consultation, hearings, and extension<span class="tag-ph">UK -- PHASE 2</span></h4>
         <p>CMA invites comments, extends its reference period to 14 June. Main-party hearing 19 March; remedies meeting 30 March.<sup>5,9</sup></p>
       </div>
       <div class="tl-item uk r"><div class="dot"></div>
         <div class="date">16 Apr 2026</div>
-        <h4>CMA issues provisional decision on remedies<span class="tag-ph">UK · PHASE 2</span></h4>
-        <p>The partial Backgrid/Splash proposal is deemed insufficient; a broader sale is signalled.<sup>5,9</sup></p>
+        <h4>CMA issues provisional decision on remedies<span class="tag-ph">UK -- PHASE 2</span></h4>
+        <p>The partial Backgrid/Splash proposal is deemed insufficient; divestiture of the full editorial business is signalled.<sup>5,9</sup></p>
       </div>
       <div class="tl-item uk r"><div class="dot"></div>
         <div class="date">15 May 2026</div>
-        <h4>CMA conditionally clears the merger<span class="tag-ph">UK · FINAL</span></h4>
-        <p>Clearance is conditioned on the sale of Shutterstock's entire <b>global editorial business</b> to a CMA-approved buyer. The Backgrid/Splash-only offer was rejected as insufficient.<sup>9,10</sup></p>
+        <h4>CMA conditionally clears the merger<span class="tag-ph">UK -- FINAL</span></h4>
+        <p>Clearance conditioned on the sale of Shutterstock's entire global editorial business -- including Rex Features, Splash News, and Backgrid -- to a CMA-approved buyer. The Backgrid and Splash-only offer was rejected as insufficient.<sup>9,10</sup></p>
       </div>
       <div class="tl-item r"><div class="dot"></div>
-        <div class="date">06 Oct 2026</div>
-        <h4>Merger outside date</h4>
-        <p>If not consummated by this date, the escrowed notes face special mandatory redemption — a hard clock running against the editorial divestiture process.<sup>6</sup></p>
+        <div class="date">21 Jun 2026</div>
+        <h4>Getty Images signs multi-year display partnership with OpenAI</h4>
+        <p>Licensed editorial and stock photography surfaces inside ChatGPT search results with attribution. Explicitly not a training deal -- Getty retains training rights.<sup>19</sup></p>
+      </div>
+      <div class="tl-item end r"><div class="dot"></div>
+        <div class="date">30 Jun 2026</div>
+        <h4>Getty board votes unanimously to terminate</h4>
+        <p>The Getty Images board resolved unanimously not to proceed with the sale of Shutterstock's editorial business under CMA supervision and to terminate the merger agreement following the passage of the Second Extended End Date.<sup>18</sup></p>
+      </div>
+      <div class="tl-item end r"><div class="dot"></div>
+        <div class="date">06 Jul 2026</div>
+        <h4>Merger agreement officially terminated -- special mandatory redemption triggered</h4>
+        <p>The Second Extended End Date passes. The merger agreement is terminated. Getty's 10.500% senior secured notes due 2030 are subject to special mandatory redemption under the indenture dated 21 October 2025: principal plus accrued interest is returned to bondholders. Getty announces it will retain a financial advisor to evaluate strategic financing alternatives. SSTK falls approximately 29% on the announcement, erasing the merger premium.<sup>18</sup></p>
       </div>
     </div>
   </div>
@@ -749,68 +774,70 @@ footer{padding:64px 0 80px;background:#050610}
     <div class="lens-head r"><span class="num">LENS 01</span><span class="kicker muted">Operations &amp; securities servicing</span></div>
     <div class="sec-head" style="margin-top:6px">
       <div><h2 class="r d1">The corporate actions view</h2></div>
-      <p class="sec-intro r d2">How a custodian, transfer agent, or back-office team would code, communicate, and process this event — including the bilateral break-up structure and the escrowed debt.</p>
+      <p class="sec-intro r d2">How a custodian, transfer agent, or back-office team would code, communicate, and process this event -- and what the termination means for every team that spent 18 months preparing to service it.</p>
     </div>
     <div class="grid2 r d1">
+      <div class="card alert-card">
+        <h4>The election event: 18 months open, closed with nothing to process</h4>
+        <p>The merger termination unwinds the entire stockholder election event. No consideration will be paid. No SSTK shares will be exchanged.<sup>18</sup></p>
+        <ul>
+          <li>Cash elections at $28.84870 per share: unwound.</li>
+          <li>Stock elections at 13.67237 Getty shares per share: unwound.</li>
+          <li>Mixed elections at $9.50 cash plus 9.17 Getty shares: unwound.</li>
+          <li>Every proration calculation, cash in lieu model, and tax lot analysis built for this event is now moot.</li>
+          <li>SSTK remains listed on NYSE as a standalone company. The CUSIP is not retired.</li>
+        </ul>
+      </div>
+      <div class="card alert-card">
+        <h4>The debt event: special mandatory redemption triggered</h4>
+        <p>The termination triggers a separate, distinct corporate action on the debt side.<sup>6,18</sup></p>
+        <ul>
+          <li>Getty's $628.4M 10.500% senior secured notes due 2030 are subject to special mandatory redemption under the indenture dated 21 October 2025.</li>
+          <li>Redemption price: 100% of principal plus accrued and unpaid interest.</li>
+          <li>Interest is scheduled semiannually on 15 May and 15 November. The carry cost of holding these notes in escrow for roughly nine months is a real, sunk cost to Getty.</li>
+          <li>Fixed-income servicing teams must process the redemption and update position records accordingly.</li>
+        </ul>
+      </div>
       <div class="card">
         <h4>Event classification</h4>
-        <p>A <b>stock-for-stock merger of equals</b> with a target-side stockholder election. The election is voluntary; the exchange itself is mandatory upon close.<sup>1,2</sup></p>
+        <p>As originally structured: a <b>stock-for-stock merger of equals</b> with a target-side stockholder election. The election was voluntary; the exchange would have been mandatory upon close.<sup>1,2</sup></p>
         <ul>
-          <li>Surviving listed issuer: Getty Images Holdings, Inc. (NYSE: GETY).</li>
-          <li>Shutterstock (NYSE: SSTK) shares are cancelled at close; the line is delisted and the CUSIP retired.</li>
-          <li>Cash election fixed at $28.84870/share; stock election fixed at 13.67237 Getty shares per SSTK share; mixed election fixed at $9.50 cash plus 9.17 Getty shares (the default).</li>
+          <li>Surviving listed issuer would have been: Getty Images Holdings, Inc. (NYSE: GETY).</li>
+          <li>Shutterstock (NYSE: SSTK) shares would have been cancelled at close; the line delisted and the CUSIP retired.</li>
+          <li>Neither has happened. Both lines remain active.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Mechanics ops teams must monitor</h4>
+        <h4>Break-up fee: what the primary filings say</h4>
+        <p>The merger agreement contains bilateral termination fees. Whether any fee is payable in this specific termination scenario is a nuanced legal question.<sup>16,18</sup></p>
         <ul>
-          <li><b>Election window and default:</b> holders who make no valid election are treated as making a mixed election.</li>
-          <li><b>Proration:</b> both the cash election and the stock election are subject to proration. If the cash pool is oversubscribed, cash elections are prorated; if the stock pool is oversubscribed, stock elections are prorated. The aggregate consideration is fixed at $9.50 cash plus 9.17 Getty shares per Shutterstock share outstanding.</li>
-          <li><b>Fractional shares:</b> no fractional Getty shares will be issued; fractional entitlements are settled in cash in lieu.</li>
-          <li><b>Tax treatment:</b> the parties intend the transaction to qualify as a tax-deferred reorganization for U.S. federal income tax purposes. Cash received, including cash in lieu of fractional shares, may cause taxable gain recognition. Not tax advice.</li>
+          <li>The Form 8-K and Form 425 filed 30 June 2026 describe termination as occurring at the Second Extended End Date -- consistent with an outside date lapse, which does not trigger a termination fee under the merger agreement.</li>
+          <li>Some secondary sources assert Getty owes Shutterstock $40M. This claim has not been confirmed in either company's primary SEC filings reviewed for this site.</li>
+          <li>Getty's maximum contractual fee exposure was $40M (financing termination right) or $32.7M (rival deal scenario). Both sides' advisors and lawyers are paid regardless.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Break-up fee mechanics</h4>
-        <p>The bilateral termination structure matters for risk management on both sides.<sup>16</sup></p>
-        <ul>
-          <li>If Shutterstock pursues a superior proposal: Shutterstock pays Getty <b>$32.7M</b>.</li>
-          <li>If Getty terminates and completes a competing deal within 12 months: Getty pays Shutterstock <b>$32.7M</b>.</li>
-          <li>If Getty cannot fund the cash consideration (financing termination right): Getty pays Shutterstock <b>$40.0M</b>.</li>
-          <li>Both fees cannot be triggered simultaneously; Getty's maximum exposure is $40M.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>A second event on the debt side</h4>
-        <p>The deal spawned its own debt corporate action: $628.4M of 10.500% senior secured notes issued and escrowed.<sup>6</sup></p>
-        <ul>
-          <li>If the merger is not consummated by 6 Oct 2026, the notes are subject to special mandatory redemption at 100% of issue price plus accrued and unpaid interest.</li>
-          <li>Interest is scheduled semiannually on 15 May and 15 November, beginning 15 May 2026.</li>
-          <li>A live example of acquisition financing riding alongside an equity event, with its own redemption trigger for fixed-income servicing teams.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>Key dates for instruction</h4>
+        <h4>Key dates</h4>
         <div class="dtable-wrap" style="margin-top:4px">
           <table class="dtable narrow">
             <tbody>
               <tr><td>Announcement</td><td class="mono">07 Jan 2025</td></tr>
               <tr><td>Target stockholder vote</td><td class="mono">10 Jun 2025</td></tr>
+              <tr><td>Escrowed notes priced</td><td class="mono">06 Oct 2025</td></tr>
               <tr><td>US DOJ clearance</td><td class="mono">23 Feb 2026</td></tr>
               <tr><td>UK CMA conditional clearance</td><td class="mono">15 May 2026</td></tr>
-              <tr><td>Outside date / escrow trigger</td><td class="mono">06 Oct 2026</td></tr>
+              <tr><td>Getty board vote to terminate</td><td class="mono">30 Jun 2026</td></tr>
+              <tr><td>Merger agreement terminated</td><td class="mono">06 Jul 2026</td></tr>
             </tbody>
           </table>
         </div>
-        <p style="margin-top:14px;color:var(--paper-dim);font-size:.93rem">Close is <b style="color:var(--paper)">conditional</b> on completing the CMA-mandated editorial divestiture. No definitive record/payment date for the equity exchange has been set.</p>
       </div>
       <div class="card">
-        <h4>The CMA divestiture as a corporate action</h4>
-        <p>The clearance condition requires Shutterstock to divest its entire global editorial business to a CMA-approved buyer before the merger can close.<sup>9,10</sup></p>
+        <h4>What comes next for each company</h4>
         <ul>
-          <li>An offer to sell only Backgrid and Splash (celebrity/paparazzi) was rejected — the CMA found too much overlap with the broader standard editorial operation.</li>
-          <li>No CMA-approved purchaser has been publicly named as of 1 June 2026.</li>
-          <li>The October 2026 outside date creates material time pressure on the sale process.</li>
+          <li><b>Getty:</b> Retaining a financial advisor to evaluate strategic financing alternatives. Carries approximately $2 billion in total debt without the $150--$200M in annual synergies the merger was supposed to generate. Has a multi-year display licensing agreement with OpenAI announced 21 June 2026.<sup>18,19</sup></li>
+          <li><b>Shutterstock:</b> Operating as a standalone company. CEO Paul Hennessy stated the company has "a strong track record as a standalone company." Has an existing training data partnership with OpenAI powering DALL-E.<sup>18</sup></li>
+          <li>Both companies are now direct competitors again in the same structurally pressured market they tried to escape by merging.</li>
         </ul>
       </div>
     </div>
@@ -823,42 +850,41 @@ footer{padding:64px 0 80px;background:#050610}
     <div class="lens-head r"><span class="num">LENS 02</span><span class="kicker muted">Strategy &amp; value creation</span></div>
     <div class="sec-head" style="margin-top:6px">
       <div><h2 class="r d1">The M&amp;A advisory view</h2></div>
-      <p class="sec-intro r d2">How a strategy adviser would frame the rationale, stress-test the synergies, and flag the structural risks — including what the CMA remedy does to the value thesis.</p>
+      <p class="sec-intro r d2">How a strategy adviser would frame the rationale, what the deal was supposed to deliver, and what the termination leaves behind.</p>
     </div>
     <div class="grid2 r d1">
       <div class="card">
         <h4>Strategic rationale</h4>
-        <p>Scale-driven consolidation in a maturing market facing a generative-AI demand shock. Combining complementary creative, editorial, and footage libraries widens the catalogue, deepens exclusive event coverage, and creates cross-sell into subscription revenue, which represents roughly 46% of pro-forma 2024 revenue.<sup>1</sup></p>
+        <p>Scale-driven consolidation in a maturing market facing a generative-AI demand shock. Combining complementary creative, editorial, and footage libraries was intended to widen the catalogue, deepen exclusive event coverage, and create cross-sell into subscription revenue, which represented roughly 46% of pro-forma 2024 revenue.<sup>1</sup></p>
       </div>
       <div class="card">
-        <h4>Value-creation thesis</h4>
+        <h4>Value-creation thesis -- never realized</h4>
         <ul>
-          <li><b>Cost synergies:</b> $150–200M annual across SG&amp;A and capex by year three.</li>
-          <li><b>Accretion:</b> earnings and cash-flow accretive from year two.</li>
-          <li><b>Financial scale:</b> pro-forma 2024 revenue of $1.98–1.99B; pre-synergy EBITDA $569–574M.<sup>1</sup></li>
-          <li><b>Leverage:</b> ~3.0× net leverage at signing, before the high-yield financing stack raised the debt load further.</li>
+          <li><b>Cost synergies:</b> $150--200M annual across SG&amp;A and capex by year three. Not realized.</li>
+          <li><b>Accretion:</b> Earnings and cash-flow accretive from year two. Not realized.</li>
+          <li><b>Financial scale:</b> Pro-forma 2024 revenue of $1.98--1.99B; pre-synergy EBITDA $569--574M. Never combined.<sup>1</sup></li>
         </ul>
       </div>
       <div class="card">
-        <h4>Synergy and integration analysis</h4>
-        <p>Most near-term synergy value sits in overlapping SG&amp;A and technology platforms rather than revenue uplift. A diligence team would stress-test for <b>revenue dis-synergies</b>: customer overlap, contributor churn, and the morale of two large creator ecosystems through a prolonged, contested integration.</p>
+        <h4>The remedy risk that killed the deal</h4>
+        <p>The CMA's condition was not a negotiating position. It was structural: divest the entire global editorial business -- Rex Features, Splash News, and Backgrid -- to a buyer who did not yet exist and would need CMA approval. That condition eliminated the very scale advantage the merger was designed to create. Getty's board correctly identified that accepting the condition made the deal not worth doing.</p>
       </div>
       <div class="card">
-        <h4>The remedy risk baked into the deal</h4>
-        <p>The CMA's requirement to divest Shutterstock's entire global editorial business is a textbook illustration of <b>remedy risk eroding the original deal thesis.</b> The editorial business was part of the scale argument — selling it to clear the deal reduces the very combination that justified the premium and the synergy estimates.</p>
-      </div>
-      <div class="card">
-        <h4>Risks a diligence team would flag</h4>
+        <h4>What the termination leaves behind</h4>
         <ul>
-          <li><b>AI substitution:</b> generative AI is reducing licensing demand from creative buyers — the structural question over the entire thesis.</li>
-          <li><b>Expensive financing:</b> coupon range of 10.5%–14% across the capital structure.<sup>12,13</sup></li>
-          <li><b>Divestiture execution:</b> finding a CMA-approved buyer for a whole editorial business within the Oct 2026 outside date is a live, material risk.</li>
-          <li><b>Break-up optionality:</b> the $40M financing termination fee sets a floor on Getty's cost of walking away if debt conditions deteriorate.</li>
+          <li>Getty carrying approximately $2 billion in total debt, now exploring "strategic financing alternatives."</li>
+          <li>$628.4M in notes to be redeemed at par plus accrued interest -- a sunk carry cost.</li>
+          <li>18 months of management bandwidth, advisory fees, and legal costs on both sides: unrecoverable.</li>
+          <li>Both companies facing the same AI disruption threat they tried to address through scale, now as smaller standalone businesses.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Why this structure signals negotiating parity</h4>
-        <p>The 54.7/45.3 ownership split, the 11-member board with four Shutterstock seats, and the bilateral break-up fees are all markers of a genuine merger of equals. In a standard acquisition the target fee stands alone; here both sides carry exposure — a structural acknowledgment that each party's consent matters all the way to close.</p>
+        <h4>The AI irony</h4>
+        <p>The deal was partly motivated by the competitive threat of AI-generated imagery. Within weeks of termination, Getty had signed a display licensing deal with OpenAI (images in ChatGPT) and Shutterstock reaffirmed its training data deal with OpenAI (powering DALL-E).<sup>19</sup> Two companies that tried to merge to fight AI are now individually negotiating with the same AI platform -- on opposite sides of the content relationship.</p>
+      </div>
+      <div class="card">
+        <h4>Why the structure signalled negotiating parity</h4>
+        <p>The 54.7/45.3 ownership split, the 11-member board with four Shutterstock seats, and the bilateral break-up fees were all markers of a genuine merger of equals. In a standard acquisition the target fee stands alone; here both sides carried exposure -- a structural acknowledgment that each party's consent mattered. Ultimately it was regulatory consent that was never fully obtained.</p>
       </div>
     </div>
   </div>
@@ -870,42 +896,42 @@ footer{padding:64px 0 80px;background:#050610}
     <div class="lens-head r"><span class="num">LENS 03</span><span class="kicker muted">Multi-jurisdiction antitrust</span></div>
     <div class="sec-head" style="margin-top:6px">
       <div><h2 class="r d1">Regulators in international M&amp;A</h2></div>
-      <p class="sec-intro r d2">The defining feature of this deal: the US DOJ cleared it unconditionally; the UK CMA required a structural divestiture. Same transaction, opposite conclusions.</p>
+      <p class="sec-intro r d2">The DOJ cleared it. The CMA killed it. The definitive case study in multi-jurisdiction regulatory risk.</p>
     </div>
     <div class="split r d1">
       <div class="col us">
         <div class="flagline">United States</div>
-        <h4>DOJ — clean clearance</h4>
+        <h4>DOJ -- clean clearance</h4>
         <p>The Department of Justice let the HSR waiting period expire <b style="color:var(--paper)">without conditions</b> on 23 February 2026. No remedies, no divestiture, no behavioural commitments.<sup>3</sup></p>
-        <div class="verdict">OUTCOME → Unconditional clearance.</div>
+        <div class="verdict">OUTCOME -- Unconditional clearance. Deal could have closed on US terms alone.</div>
       </div>
       <div class="col uk">
         <div class="flagline">United Kingdom</div>
-        <h4>CMA — structural remedy</h4>
-        <p>After Phase 1 referral and an in-depth Phase 2 investigation under the Enterprise Act 2002, the CMA <b style="color:var(--paper)">conditionally cleared</b> on 15 May 2026. Clearance requires divesting Shutterstock's entire global editorial business to a CMA-approved buyer.<sup>9,10</sup></p>
-        <div class="verdict">OUTCOME → Conditional clearance. Full editorial divestiture required.</div>
+        <h4>CMA -- impossible condition</h4>
+        <p>After Phase 1 referral and an in-depth Phase 2 investigation under the Enterprise Act 2002, the CMA conditionally cleared on 15 May 2026. Clearance required divesting Shutterstock's entire global editorial business -- Rex Features, Splash News, and Backgrid -- to a CMA-approved buyer. Getty's board rejected this condition on 30 June 2026.<sup>9,10,18</sup></p>
+        <div class="verdict">OUTCOME -- Conditional clearance rejected. Merger terminated 06 Jul 2026.</div>
       </div>
     </div>
     <div class="grid2 r d2" style="margin-top:1px">
       <div class="card">
         <h4>Why the outcomes diverged</h4>
-        <p>Both regulators agreed the global stock-content market raised no concerns. The split turns on the UK <b>editorial</b> imagery market. The CMA judged Shutterstock is one of the few meaningful alternatives to Getty for UK media outlets, and that the combination would reduce competition there materially.<sup>3,9</sup></p>
+        <p>Both regulators agreed the global stock-content market raised no concerns. The split turns on the UK <b>editorial</b> imagery market. The CMA judged Shutterstock is one of the few meaningful alternatives to Getty for UK media outlets -- specifically through Rex Features, Splash News, and Backgrid -- and that the combination would remove that competition.<sup>3,9</sup></p>
       </div>
       <div class="card">
-        <h4>Structural vs behavioural remedies</h4>
-        <p>The CMA rejected five-year behavioural undertakings (price caps, product-range commitments) and the narrower Backgrid/Splash-only offer. Only a <b>full structural divestiture</b> of the broader editorial business would restore the competition Shutterstock currently provides.<sup>8,9,10</sup></p>
+        <h4>Why the condition was unworkable</h4>
+        <p>The CMA rejected five-year behavioural undertakings and the parties' Backgrid and Splash-only offer. The required full editorial divestiture meant finding an unidentified, unapproved buyer for a significant business unit within a four-month window. No buyer was ever named. The condition was structurally impossible to satisfy on the timeline available.<sup>8,9,10</sup></p>
       </div>
       <div class="card">
         <h4>Process lessons for dealmakers</h4>
         <ul>
-          <li>Remedies tabled on the final permitted day left the CMA insufficient time to assess complex commitments — a procedural misstep that hardened the referral.<sup>7,8</sup></li>
+          <li>Remedies tabled on the final permitted day left the CMA insufficient time to assess complex commitments -- a procedural misstep that hardened the referral.<sup>7,8</sup></li>
           <li>Behavioural remedies face monitoring, circumvention, and specification risks that the CMA consistently disfavours for enduring concerns.</li>
-          <li>Early, substantive remedy engagement is now table stakes in UK Phase 1.</li>
+          <li>Early, substantive remedy engagement is table stakes in UK Phase 1. Late submission is not a strategy.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>The bigger picture</h4>
-        <p>Despite government pressure for a more pro-investment posture on deals also cleared in the US, the CMA acted robustly. This deal is a teaching case: <b>a global transaction is only as approved as its strictest jurisdiction.</b><sup>7,8,9</sup></p>
+        <h4>The lesson this deal will be taught with</h4>
+        <p>The DOJ cleared it unconditionally. The CMA imposed a condition no rational board would accept. The deal died. This is the definitive modern example of the principle that a global transaction is only as approved as its strictest jurisdiction -- and that regulatory risk is a timeline risk, a financing risk, and an operational risk, not just a legal one.</p>
       </div>
     </div>
   </div>
@@ -915,33 +941,33 @@ footer{padding:64px 0 80px;background:#050610}
 <section class="band" id="finance">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="idx r">/ 04 — Balance-sheet reality</div><h2 class="r d1">Financing under pressure</h2></div>
-      <p class="sec-intro r d2">The verifiable leverage picture drawn from Getty's Q1 2026 primary disclosures.</p>
+      <div><div class="idx r">/ 04 -- Balance-sheet reality</div><h2 class="r d1">Financing: the cost of a deal that never closed</h2></div>
+      <p class="sec-intro r d2">Getty built an acquisition financing structure for a deal that was terminated. The capital structure consequences are real and immediate.</p>
     </div>
     <div class="bento r d1">
+      <div class="cell-b span3 alert-cell">
+        <div class="lbl">Notes status</div>
+        <div class="big" style="font-size:clamp(1.4rem,2.8vw,2rem);line-height:1.1">MANDATORY REDEMPTION</div>
+        <div class="note">$628.4M 10.500% notes due 2030 redeemed at par plus accrued interest.<sup>6,18</sup></div>
+      </div>
       <div class="cell-b span3">
-        <div class="lbl">Total debt · 31 Mar 2026</div>
+        <div class="lbl">Total debt -- 31 Mar 2026</div>
         <div class="big"><span class="u">$</span><span class="count" data-to="2.0" data-dec="1">0</span>B</div>
-        <div class="note">Senior secured, term loan, unsecured notes.<sup>11</sup></div>
+        <div class="note">Remaining after note redemption, Getty must address its capital structure.<sup>11</sup></div>
       </div>
       <div class="cell-b span3">
-        <div class="lbl">Escrowed merger notes</div>
-        <div class="big"><span class="u">$</span><span class="count" data-to="628" data-dec="0">0</span>M</div>
-        <div class="note">10.500% — redeemable if deal lapses 6 Oct 2026.<sup>6,12</sup></div>
+        <div class="lbl">Synergies -- realized</div>
+        <div class="big"><span class="u">$</span>0</div>
+        <div class="note">$150--200M annual synergies targeted. None realized. Deal never closed.<sup>1</sup></div>
       </div>
       <div class="cell-b span3">
-        <div class="lbl">Est. 2026 cash interest</div>
-        <div class="big"><span class="u">$</span><span class="count" data-to="194" data-dec="0">0</span>M</div>
-        <div class="note">Net of interest earned on escrowed proceeds.<sup>12</sup></div>
-      </div>
-      <div class="cell-b span3">
-        <div class="lbl">Note coupon range</div>
-        <div class="big">10.5–<span class="u">14</span>%</div>
-        <div class="note">AI-disruption risk priced into the credit.<sup>12,13</sup></div>
+        <div class="lbl">Note coupon</div>
+        <div class="big">10.5<span class="u">%</span></div>
+        <div class="note">Priced at high-yield given AI-disruption risk. Carry cost sunk on deal that never closed.<sup>12,13</sup></div>
       </div>
       <div class="cell-b span12">
-        <div class="lbl">What the market is weighing</div>
-        <p style="color:var(--paper-dim);font-size:.97rem;max-width:900px">Bond investors and analysts have repeatedly flagged two concerns: the cost of refinancing Shutterstock's debt through the high-yield market, and the risk that generative AI erodes licensing demand — the core of both businesses.<sup>13</sup> Getty's Q1 2026 results disclose total debt of roughly $2.0&nbsp;billion as of 31 March 2026.<sup>11,12</sup> We have not located a formal "going concern" qualification in Getty's primary filings and make no such claim here.</p>
+        <div class="lbl">Strategic financing alternatives -- what that phrase means</div>
+        <p style="color:var(--paper-dim);font-size:.97rem;max-width:900px">Getty's board has stated it will retain a financial advisor to evaluate strategic financing alternatives. In context, this is not routine language. Getty enters the post-merger period carrying approximately $2 billion in total debt, without the $150--200M in annual synergies this deal was supposed to generate, and with a capital structure that was built around a transaction that no longer exists. Credit analysts and capital markets professionals will read this language carefully. Getty's Q1 2026 results disclosed total debt of approximately $2.0 billion as of 31 March 2026. We have not located a formal going concern qualification in Getty's primary filings and make no such claim here.<sup>11,12,18</sup></p>
       </div>
     </div>
   </div>
@@ -950,7 +976,8 @@ footer{padding:64px 0 80px;background:#050610}
 <!-- COMPANY PROFILES -->
 <section class="band" id="companies">
   <div class="wrap">
-    <div class="sec-head"><div><div class="idx r">/ 05 — The two brands</div><h2 class="r d1">Who is combining</h2></div></div>
+    <div class="sec-head"><div><div class="idx r">/ 05 -- The two brands</div><h2 class="r d1">Back to competing</h2></div>
+    <p class="sec-intro r d2">As of July 6, 2026, Getty Images and Shutterstock are independent, standalone competitors in the same market they tried to leave by merging.</p></div>
     <div class="grid2 r d1">
       <div class="card">
         <h4>Getty Images Holdings, Inc.</h4>
@@ -959,9 +986,9 @@ footer{padding:64px 0 80px;background:#050610}
             <tbody>
               <tr><td>Ticker</td><td class="mono">NYSE: GETY</td></tr>
               <tr><td>Headquarters</td><td>Seattle, Washington</td></tr>
-              <tr><td>FY2024 revenue</td><td class="mono">$939.3M</td></tr>
               <tr><td>FY2025 revenue</td><td class="mono">$981.3M (record)<sup>14</sup></td></tr>
-              <tr><td>Profile</td><td>Premium creative &amp; editorial imagery, exclusive event coverage<sup>11,14</sup></td></tr>
+              <tr><td>Post-deal priority</td><td>Strategic financing alternatives; ~$2B debt load<sup>18</sup></td></tr>
+              <tr><td>OpenAI deal</td><td>Multi-year display licensing (ChatGPT search) announced 21 Jun 2026<sup>19</sup></td></tr>
             </tbody>
           </table>
         </div>
@@ -972,10 +999,10 @@ footer{padding:64px 0 80px;background:#050610}
           <table class="dtable narrow">
             <tbody>
               <tr><td>Ticker</td><td class="mono">NYSE: SSTK</td></tr>
-              <tr><td>Founded</td><td>2002 · Jon Oringer</td></tr>
               <tr><td>Headquarters</td><td>Empire State Building, New York</td></tr>
               <tr><td>FY2025 revenue</td><td class="mono">$989.9M<sup>17</sup></td></tr>
-              <tr><td>Notable units</td><td>Giphy, Envato, Pond5, TurboSquid, PremiumBeat, Splash News, Backgrid<sup>15</sup></td></tr>
+              <tr><td>Post-deal priority</td><td>Standalone strategy update at Q2 2026 earnings<sup>18</sup></td></tr>
+              <tr><td>OpenAI deal</td><td>Training data partnership powering DALL-E (existing)<sup>19</sup></td></tr>
             </tbody>
           </table>
         </div>
@@ -988,16 +1015,16 @@ footer{padding:64px 0 80px;background:#050610}
 <section class="band" id="sources">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="idx r">/ 06 — Verification</div><h2 class="r d1">Sources</h2></div>
-      <p class="sec-intro r d2">Every figure traces to a primary filing, regulator, company release, or named professional commentary.</p>
+      <div><div class="idx r">/ 06 -- Verification</div><h2 class="r d1">Sources</h2></div>
+      <p class="sec-intro r d2">Every figure traces to a primary filing, regulator, company release, or named professional commentary. Content current as of 03 July 2026.</p>
     </div>
     <div class="srcgrid r d1">
       <div class="src"><div class="n">[1]</div><a href="https://www.globenewswire.com/news-release/2025/01/07/3005175/0/en/Getty-Images-and-Shutterstock-to-Merge-Creating-a-Premier-Visual-Content-Company.html" target="_blank" rel="noopener">Getty / Shutterstock merger announcement (07 Jan 2025)</a><span>GlobeNewswire / company press release</span></div>
-      <div class="src"><div class="n">[2]</div><a href="https://www.sec.gov/Archives/edgar/data/0001898496/000121390025037626/ea0235881-03.htm" target="_blank" rel="noopener">Form 424B3 — joint proxy &amp; prospectus</a><span>U.S. Securities and Exchange Commission (EDGAR)</span></div>
+      <div class="src"><div class="n">[2]</div><a href="https://www.sec.gov/Archives/edgar/data/0001898496/000121390025037626/ea0235881-03.htm" target="_blank" rel="noopener">Form 424B3 -- joint proxy &amp; prospectus</a><span>U.S. Securities and Exchange Commission (EDGAR)</span></div>
       <div class="src"><div class="n">[3]</div><a href="https://newsroom.gettyimages.com/en/getty-images/getty-images-shutterstock-doj" target="_blank" rel="noopener">DOJ unconditional antitrust clearance (23 Feb 2026)</a><span>Getty Images newsroom</span></div>
-      <div class="src"><div class="n">[4]</div><a href="https://www.gov.uk/cma-cases/getty-images-slash-shutterstock-merger-inquiry" target="_blank" rel="noopener">Getty / Shutterstock merger inquiry — case page</a><span>UK Competition and Markets Authority (GOV.UK)</span></div>
-      <div class="src"><div class="n">[5]</div><a href="https://investors.gettyimages.com/news-releases/news-release-details/getty-images-reports-first-quarter-2026-results" target="_blank" rel="noopener">Getty Images Q1 2026 results — regulatory chronology</a><span>Getty Images investor relations</span></div>
-      <div class="src"><div class="n">[6]</div><a href="https://investors.gettyimages.com/news-releases/news-release-details/getty-images-announces-settlement-exchange-offer-and-consent" target="_blank" rel="noopener">$628.4M 10.500% senior secured notes — settlement</a><span>Getty Images investor relations</span></div>
+      <div class="src"><div class="n">[4]</div><a href="https://www.gov.uk/cma-cases/getty-images-slash-shutterstock-merger-inquiry" target="_blank" rel="noopener">Getty / Shutterstock merger inquiry -- case page</a><span>UK Competition and Markets Authority (GOV.UK)</span></div>
+      <div class="src"><div class="n">[5]</div><a href="https://investors.gettyimages.com/news-releases/news-release-details/getty-images-reports-first-quarter-2026-results" target="_blank" rel="noopener">Getty Images Q1 2026 results -- regulatory chronology</a><span>Getty Images investor relations</span></div>
+      <div class="src"><div class="n">[6]</div><a href="https://investors.gettyimages.com/news-releases/news-release-details/getty-images-announces-settlement-exchange-offer-and-consent" target="_blank" rel="noopener">$628.4M 10.500% senior secured notes -- settlement</a><span>Getty Images investor relations</span></div>
       <div class="src"><div class="n">[7]</div><a href="https://www.osborneclarke.com/insights/what-does-getty-imagesshutterstock-decision-tell-business-about-how-cma-approaches-mergers" target="_blank" rel="noopener">CMA approach to mergers analysis</a><span>Osborne Clarke (law firm commentary)</span></div>
       <div class="src"><div class="n">[8]</div><a href="https://www.slaughterandmay.com/insights/new-insights/competition-and-regulatory-newsletter-getty-shutterstock-receives-conditional-clearance-from-the-cma/" target="_blank" rel="noopener">Conditional clearance analysis</a><span>Slaughter and May (law firm commentary)</span></div>
       <div class="src"><div class="n">[9]</div><a href="https://www.gov.uk/government/news/cma-conditionally-clears-getty-merger-with-shutterstock" target="_blank" rel="noopener">CMA conditionally clears the merger (15 May 2026)</a><span>UK Competition and Markets Authority (GOV.UK)</span></div>
@@ -1006,9 +1033,11 @@ footer{padding:64px 0 80px;background:#050610}
       <div class="src"><div class="n">[12]</div><a href="https://www.investing.com/news/transcripts/earnings-call-transcript-getty-images-q1-2026-sees-mixed-results-and-stock-dip-93CH-4678541" target="_blank" rel="noopener">Getty Images Q1 2026 earnings call transcript</a><span>Investing.com</span></div>
       <div class="src"><div class="n">[13]</div><a href="https://octus.com/resources/articles/primary-preview-investors-express-mixed-views-on-getty-images-bond/" target="_blank" rel="noopener">Investor views on the Getty bond</a><span>Octus</span></div>
       <div class="src"><div class="n">[14]</div><a href="https://www.sec.gov/Archives/edgar/data/1898496/000162828026018160/gety-20251231.htm" target="_blank" rel="noopener">Getty Images Form 10-K for FY2025</a><span>U.S. Securities and Exchange Commission (EDGAR)</span></div>
-      <div class="src"><div class="n">[15]</div><a href="https://www.sec.gov/Archives/edgar/data/1549346/000154934625000011/sstk-20241231.htm" target="_blank" rel="noopener">Shutterstock Form 10-K for FY2024 — brand portfolio</a><span>U.S. Securities and Exchange Commission (EDGAR)</span></div>
+      <div class="src"><div class="n">[15]</div><a href="https://www.sec.gov/Archives/edgar/data/1549346/000154934625000011/sstk-20241231.htm" target="_blank" rel="noopener">Shutterstock Form 10-K for FY2024 -- brand portfolio</a><span>U.S. Securities and Exchange Commission (EDGAR)</span></div>
       <div class="src"><div class="n">[16]</div><a href="https://www.sec.gov/Archives/edgar/data/0001898496/000110465925001742/tm2415646d1_8k.htm" target="_blank" rel="noopener">Merger agreement termination fees</a><span>SEC Form 8-K / Form 425 (07 Jan 2025)</span></div>
       <div class="src"><div class="n">[17]</div><a href="https://investor.shutterstock.com/news-releases/news-release-details/shutterstock-reports-full-year-2025-and-fourth-quarter-financial" target="_blank" rel="noopener">Shutterstock full-year 2025 and fourth-quarter results</a><span>Shutterstock investor relations</span></div>
+      <div class="src"><div class="n">[18]</div><a href="https://www.stocktitan.net/sec-filings/GETY/425-getty-images-holdings-inc-business-combination-communication-1ace60e9c657.html" target="_blank" rel="noopener">Getty Images Form 425 -- board vote to terminate (30 Jun 2026)</a><span>SEC Form 425 / Form 8-K via StockTitan</span></div>
+      <div class="src"><div class="n">[19]</div><a href="https://newsroom.gettyimages.com/en/getty-images/getty-images-openai" target="_blank" rel="noopener">Getty Images -- OpenAI display licensing partnership (21 Jun 2026)</a><span>Getty Images newsroom</span></div>
     </div>
   </div>
 </section>
@@ -1017,10 +1046,10 @@ footer{padding:64px 0 80px;background:#050610}
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <div class="lg">GETTY <span class="x">×</span> SHUTTERSTOCK</div>
-      <div class="asof">CONTENT CURRENT AS OF 01 JUNE 2026</div>
+      <div class="lg">GETTY <span class="x">x</span> SHUTTERSTOCK</div>
+      <div class="asof">CONTENT CURRENT AS OF 03 JULY 2026</div>
     </div>
-    <p class="disc"><b>Disclaimer.</b> This site is an independent educational analysis assembled from public sources for illustration of corporate actions, M&amp;A advisory, and regulatory concepts. Not affiliated with, endorsed by, or sponsored by Getty Images Holdings, Inc. or Shutterstock, Inc. Figures are drawn from filings and releases linked in Sources and may be superseded by later disclosures. Live quotes are indicative and possibly delayed, and do <b>not</b> constitute investment, legal, tax, or accounting advice. All trademarks are the property of their respective owners.</p>
+    <p class="disc"><b>Disclaimer.</b> This site is an independent educational analysis assembled from public sources for illustration of corporate actions, M&amp;A advisory, and regulatory concepts. Not affiliated with, endorsed by, or sponsored by Getty Images Holdings, Inc. or Shutterstock, Inc. Figures are drawn from filings and releases linked in Sources and may be superseded by later disclosures. Live quotes are indicative and possibly delayed, and do <b>not</b> constitute investment, legal, tax, or accounting advice. The question of whether any termination fee is payable between the parties is a legal matter; readers should consult primary filings and counsel. All trademarks are the property of their respective owners.</p>
   </div>
 </footer>
 
@@ -1051,11 +1080,10 @@ document.addEventListener("keydown", e => { if(e.key==="Escape") closeMenu(); })
 
 /* ============================ FINNHUB ============================ */
 const FINNHUB_KEY = "d7mjle9r01qngrvof0vgd7mjle9r01qngrvof100";
-const CASH_REF    = 28.8487;
 const POLL_MS     = 20000;
 const SYMS        = ["GETY","SSTK"];
 
-const fmt = (n,d=2) => (n==null||isNaN(n)) ? "—"
+const fmt = (n,d=2) => (n==null||isNaN(n)) ? "--"
   : Number(n).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
 
 async function fetchQ(sym){
@@ -1067,60 +1095,35 @@ async function fetchQ(sym){
 function paintCard(sym,q){
   const el = document.getElementById("card-"+sym); if(!el) return;
   const {c,d,dp,h,l,o,pc} = q;
-  el.querySelector("[data-price]").textContent = c ? "$"+fmt(c) : "—";
+  el.querySelector("[data-price]").textContent = c ? "$"+fmt(c) : "--";
   const chgEl = el.querySelector("[data-chg]");
   if(c && d!=null){
-    const dir = d>0?"up":d<0?"down":"flat", arr = d>0?"▲":d<0?"▼":"▬";
+    const dir = d>0?"up":d<0?"down":"flat", arr = d>0?"up":d<0?"down":"flat";
     chgEl.className = "q-chg "+dir;
-    chgEl.textContent = `${arr} ${fmt(Math.abs(d))}  (${fmt(Math.abs(dp))}%)`;
+    const arrow = d>0 ? "+" : "";
+    chgEl.textContent = `${arrow}${fmt(d)}  (${arrow}${fmt(dp)}%)`;
   }
-  el.querySelector("[data-open]").textContent = o ? "$"+fmt(o) : "—";
-  el.querySelector("[data-high]").textContent = h ? "$"+fmt(h) : "—";
-  el.querySelector("[data-low]").textContent  = l ? "$"+fmt(l) : "—";
-  el.querySelector("[data-pc]").textContent   = pc? "$"+fmt(pc): "—";
+  el.querySelector("[data-open]").textContent = o ? "$"+fmt(o) : "--";
+  el.querySelector("[data-high]").textContent = h ? "$"+fmt(h) : "--";
+  el.querySelector("[data-low]").textContent  = l ? "$"+fmt(l) : "--";
+  el.querySelector("[data-pc]").textContent   = pc? "$"+fmt(pc): "--";
 }
 
-function paintStrip(qs){
-  const s = qs["SSTK"];
-  if(s?.c){
-    const diff = s.c - CASH_REF, pct = diff/CASH_REF*100;
-    document.querySelector("[data-spread]").textContent =
-      `${diff>=0?"+":""}${fmt(diff)} (${diff>=0?"+":""}${fmt(pct)}%)`;
-  }
-  document.querySelector("[data-updated]").textContent =
-    new Date().toLocaleTimeString("en-US",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
-}
 
-function paintTicker(qs){
-  const cells = SYMS.map(s=>{
-    const q=qs[s]||{}, dir=q.d>0?"up":q.d<0?"down":"";
-    const arr=q.d>0?"▲":q.d<0?"▼":"·", px=q.c?"$"+fmt(q.c):"—";
-    const pct=q.dp!=null?`${arr} ${fmt(Math.abs(q.dp))}%`:"";
-    return `<span class="cell"><b>${s}</b> ${px} <span class="${dir}">${pct}</span></span>`;
-  }).join("");
-  const info = [
-    `<span class="cell">CASH ELECTION <b>$28.8487</b></span>`,
-    `<span class="cell">EV <b>$3.7B</b></span>`,
-    `<span class="cell">GETY 54.7% · SSTK 45.3%</span>`,
-    `<span class="cell">UK CMA <b>CONDITIONAL CLEARANCE</b></span>`,
-    `<span class="cell">US DOJ <b>UNCONDITIONAL</b></span>`,
-    `<span class="cell">OUTSIDE DATE <b>06 OCT 2026</b></span>`,
-  ].join("");
-  document.getElementById("tickerTrack").innerHTML = (cells+info).repeat(2);
-}
 
 async function refresh(){
   try{
     const qs={};
     for(const s of SYMS) qs[s]=await fetchQ(s);
     SYMS.forEach(s=>paintCard(s,qs[s]));
-    paintStrip(qs);
-    paintTicker(qs);
+    document.querySelector("[data-updated]").textContent =
+      new Date().toLocaleTimeString("en-US",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
+
     document.getElementById("qnote").textContent =
-      "Quotes via Finnhub — indicative, possibly delayed. Not investment advice.";
+      "Quotes via Finnhub -- indicative, possibly delayed. Not investment advice.";
   }catch(e){
     document.getElementById("qnote").textContent =
-      "Live quotes temporarily unavailable ("+e.message+"). All other data is sourced from filings.";
+      "Live quotes temporarily unavailable ("+e.message+"). All other data is sourced from primary filings.";
   }
 }
 
